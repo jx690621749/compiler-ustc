@@ -1,0 +1,35 @@
+<project name="lab5" default="build" basedir="..">
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="GEN_DIR" value="edu/ustc/cs/compile/generator/x86"/>
+    <property name="BIN_DIR" location="bin"/>
+    <property name="ROOT_DIR" location="../.."/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+    
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    <property name="PLATFORM_LIB" value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                                         ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+                                         
+    <property name="PARSER_LIB" value="${LIB_DIR}/edu.ustc.cs.compile.parser.skipoominijool.jar:
+                        ${TOOL_DIR}/java-cup/java-cup-11a-runtime.jar"/>
+
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB" value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                                    
+    <property name="ARCH_LIB" value="${LIB_DIR}/edu.ustc.cs.compile.lir.jar"/>
+    
+    <property name="CLASSPATH" value="${PLATFORM_LIB}:${AST_LIB}:${ARCH_LIB}:${PARSER_LIB}"/>
+                                    
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               classpath="${CLASSPATH}"/>
+    </target>
+    <target name="clean">
+        <delete dir="${DEST_DIR}"/>
+    </target>
+</project>

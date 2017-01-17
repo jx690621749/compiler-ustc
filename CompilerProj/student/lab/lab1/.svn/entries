@@ -1,0 +1,76 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab1
+svn://192.168.1.254
+
+
+
+2008-04-09T00:20:29.031046Z
+169
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+test
+dir
+
+.classpath
+file
+
+
+
+
+2008-04-08T02:24:24.000000Z
+d23e012066704ec6e58a9ac4d79f8524
+2008-04-06T23:11:28.777134Z
+127
+compiler
+
+.project
+file
+
+
+
+
+2008-04-08T02:24:26.000000Z
+f3e156830f3fd2eec3eccf7b6ac4d1d6
+2008-04-06T23:11:28.777134Z
+127
+compiler
+
+config
+dir
+
+src
+dir
+
+bin
+dir
+
+README
+file
+
+
+
+
+2008-04-08T02:24:26.000000Z
+26a18cd2bed765cd5163cf4eb88c7291
+2008-04-06T23:11:28.777134Z
+127
+compiler
+

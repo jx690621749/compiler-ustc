@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 该文件是一个ant编译文件的示例，你需要根据需要自行修改 -->
+
+<project name="Compiler Demo" basedir="..">  
+  <property name="SRC_DIR" location="src"/>       <!-- 源程序文件目录 -->
+  <property name="DEST_DIR" location="classes"/>  <!-- 目标文件目录 -->
+  <property name="DOC_DIR" location="doc"/>       <!-- 文档目录 -->
+  <property name="LIB_DIR" location="lib"/>       <!-- 前端或后端所在目录 -->
+  <property name="CFG_DIR" location="config"/>    <!-- 配置文件目录 -->
+
+  <property name="ROOT_DIR" location="../.."/>    <!-- ROOT_DIR -->
+  
+  <!-- 实验平台目录和实验平台的类库文件 -->
+  <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+  <property name="PLATFORM_LIB" 
+            value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                   ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+
+  <!-- 我们提供的类库文件 -->
+  <property name="EXTRA_LIB_DIR" location="${ROOT_DIR}/lib"/>
+  <property name="EXTRA_LIB" value="${EXTRA_LIB_DIR}/edu.ustc.cs.compile.arch.jar"/>
+  
+  <!-- Eclipse AST所在目录和类库文件 -->
+  <property name="AST_DIR" location="${EXTRA_LIB_DIR}/AST/3.1.2"/>
+  <property name="AST_LIB"
+            value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                   ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                   ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                   ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>            
+
+  <!-- 实验中使用的工具的目录 -->
+  <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+  
+  <!-- JFlex -->
+  <property name="JFLEX_DIR" location="${TOOL_DIR}/jflex"/>
+  <property name="JFLEX" value="${JFLEX_DIR}/JFlex.jar"/>
+  
+  <!-- JAVA-CUP -->
+  <property name="JAVACUP_DIR" location="${TOOL_DIR}/java-cup"/>
+  <property name="JAVACUP" value="${JAVACUP_DIR}/java-cup-11a.jar"/>
+  <property name="JAVACUP_RUNTIME_LIB" value="${JAVACUP_DIR}/java-cup-11a-runtime.jar"/>  
+  
+  <!-- JAVACC -->
+  <property name="JAVACC_DIR" location="${TOOL_DIR}/javacc"/>
+  <property name="JAVACC" value="${JAVACC_DIR}/javacc.jar"/>
+
+  <!-- classpath 你需要根据自己的代码修改value的内容 -->
+  <property name="CLASSPATH"
+            value="${PLATFORM_LIB}:${EXTRA_LIB}:${AST_LIB}:${JAVACUP_RUNTIME_LIB}:${LIB_DIR}"/>
+            
+  <property name="PARSER_DIR" value="edu/ustc/cs/compile/parser/demo"/>
+  
+  <!-- 以下3个property在java-cup任务中使用，你需要根据自己的代码修改value的内容 -->
+  <property name="PARSER_PACKAGE" value="edu.ustc.cs.compile.parser.demo"/>
+  <property name="PARSER_CLASS" value="Parser"/>
+  <property name="SYM_CLASS" value="DemoSymbol"/>
+  
+  <!--
+    1.该文件中定义了以下任务：
+      jflex：调用jflex，根据${CFG_DIR}/JFlex/demo.flex生成词法分析器
+      java-cup：调用java-cup，根据${CFG_DIR}/CUP/demo.cup生成语法分析器。依赖于任务jflex。
+      javacc：调用javacc，根据${CFG_DIR}/JJ/demo.jj生成语法分析器。依赖于任务jflex。
+      config：提示修改java-cup生成的文件，以使其能在实验平台上运行。依赖于任务java-cup。
+      build_fe1：编译生成前端，需配合任务jflex和java-cup使用。
+      build_fe2：编译生成前端。依赖于任务javacc。
+      build_be：编译生成后端。
+    2.如果你使用jflex和java-cup组合生成前端，只需保留任务jflex、java-cup、config、build_fe1。
+      在执行build_fe1任务前，务必保证config任务已经执行，并且你已经按照提示修改了相应文件。
+    3.如果你使用jflex和javacc这生成前端，只需保留任务jflex、javacc、build_fe2。
+    4.如果你要编译生成后端，只需保留任务build_be。
+  -->
+
+  <!-- 利用JFlex生成词法分析器 -->
+  <target name="jflex" description="生成词法分析器">
+    <mkdir dir="${SRC_DIR}/${PARSER_DIR}"/>
+    <java fork="yes" jar="${JFLEX}">
+      <arg value="-v"/>
+      <arg value="-d"/>
+      <arg value="${SRC_DIR}/${PARSER_DIR}"/>
+      <arg value="${CFG_DIR}/JFlex/demo.flex"/>
+    </java>
+  </target>
+  
+  <!-- 利用JAVA-CUP生成语法分析器 -->
+  <target name="java-cup" depends="jflex" description="利用javacup生成语法分析器">
+    <java fork="yes" jar="${JAVACUP}">
+      <arg value="-package"/>
+      <arg value="${PARSER_PACKAGE}"/>
+      <arg value="-parser"/>
+      <arg value="${PARSER_CLASS}"/>
+      <arg value="-symbols"/>
+      <arg value="${SYM_CLASS}"/>
+      <arg value="-progress"/>
+      <arg value="${CFG_DIR}/CUP/demo.cup"/>
+    </java>
+    <move file="${PARSER_CLASS}.java" todir="${SRC_DIR}/${PARSER_DIR}"/>
+    <move file="${SYM_CLASS}.java" todir="${SRC_DIR}/${PARSER_DIR}"/>
+  </target>
+  
+  <!-- 利用JAVACC生成语法分析器 -->
+  <target name="javacc" depends="jflex" description="利用javacc生成语法分析器">
+    <java fork="yes" classpath="${CLASSPATH}" classname="javacc">
+      <arg value="-STATIC=false"/>
+      <arg value="-OUTPUT_DIRECTORY=${SRC_DIR}/${PARSER_DIR}"/>
+      <arg value="${CFG_DIR}/JJ/demo.jj"/>
+    </java>
+  </target>
+  
+  <target name="config" depends="java-cup">
+    <echo>
+You have to replace following code in ${SRC_DIR}/${PARSER_DIR}/${PARSER_CLASS}.java by yourself
+ public class ${PARSER_CLASS} extends java_cup.runtime.lr_parser
+with
+ public class ${PARSER_CLASS} extends java_cup.runtime.lr_parser implements ParserInterface        
+    </echo>
+  </target>
+  
+  <!-- 编译生成前端,与jflex、java-cup和config任务配合使用 -->
+  <target name="build_fe1">  
+    <mkdir dir="${DEST_DIR}"/>
+    <javac debug="on" classpath="${CLASSPATH}" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"/>
+  </target>
+  
+  <!-- 编译生成前端,与jflex、javacc和config任务配合使用 -->
+  <target name="build_fe2" depends="javacc">    
+    <mkdir dir="${DEST_DIR}"/>
+    <javac debug="on" classpath="${CLASSPATH}" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"/>
+  </target>
+  
+  <!-- 编译生成后端 -->
+  <target name="build_be">
+    <mkdir dir="${DEST_DIR}"/>
+    <javac debug="on" classpath="${CLASSPATH}" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"/>
+  </target>
+  
+  <!-- 清除classes -->
+  <target name="clean">
+    <delete dir="${DEST_DIR}"/>
+  </target>
+
+  <!-- 调用javadoc为你的程序生成文档 -->
+  <target name="doc">
+    <mkdir dir="${DOC_DIR}"/>
+    <javadoc sourcepath="${SRC_DIR}" destdir="${DOC_DIR}" classpath="${CLASSPATH}"
+           packagenames="edu.ustc.cs.compile.demo.*" Windowtitle="Demo Compiler"/>
+  </target>
+  
+</project>

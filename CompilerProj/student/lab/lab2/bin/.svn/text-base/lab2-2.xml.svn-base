@@ -1,0 +1,36 @@
+<project name="lab2-2" default="all">
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB"
+              value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar" />
+    
+    <property name="CLASSPATH" 
+              value="${DEST_DIR}/${LEXER_DIR}:
+                     ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar:
+                     ${AST_LIB}" />
+    
+    <target name="all">
+        <antcall target="build"/>
+        <antcall target="run"/>
+    </target>
+    
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${LEXER_DIR}/Lexer.java,
+                         ${LEXER_DIR}/ExpressionLexer.java,
+                         ${LEXER_DIR}/Symbol.java,
+                         ${LEXER_DIR}/Main.java,
+                         ${LEXER_DIR}/UnmatchedException.java"/>
+    </target>
+    
+    <target name="run">
+        <java classname="edu.ustc.cs.compile.lexer.Main"
+              classpath="${CLASSPATH}:${DEST_DIR}">
+            <arg value="2"/>
+        </java>
+    </target>
+</project>

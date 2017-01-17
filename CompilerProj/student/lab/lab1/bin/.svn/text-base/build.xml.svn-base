@@ -1,0 +1,49 @@
+<project name="SimpleMiniJOOL Intepreter" default="build" basedir="..">
+  <property name="SRC_DIR" location="${basedir}/src"/>
+  <property name="DEST_DIR" location="${basedir}/classes"/>
+  <property name="DOC_DIR" location="${basedir}/doc"/>
+
+  <property name="ROOT_DIR" location="${basedir}/../.."/>
+  <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+  <property name="PLATFORM_LIB" 
+        value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar"/>
+
+  <property name="EXTRA_LIB_DIR" location="${ROOT_DIR}/lib"/>
+  <property name="EXTRA_LIB" 
+        value="${EXTRA_LIB_DIR}/edu.ustc.cs.compile.parser.simpleminijool.jar"/>
+
+  <property name="JAVACUP_DIR" location="${ROOT_DIR}/tools/java-cup"/>
+  <property name="JAVACUP_RUNTIME_LIB" 
+        value="${JAVACUP_DIR}/java-cup-11a-runtime.jar"/>
+
+  <property name="AST_DIR" location="${ROOT_DIR}/lib/AST/3.1.2"/>
+  <property name="AST_LIB"
+        value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+           ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+           ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+           ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+
+  <property name="CLASSPATH"
+        value="${PLATFORM_LIB}:${EXTRA_LIB}:${JAVACUP_RUNTIME_LIB}:${AST_LIB}"/>
+
+  <target name="build">
+    <mkdir dir="${DEST_DIR}"/>
+    <javac classpath="${CLASSPATH}" 
+       srcdir="${SRC_DIR}" destdir="${DEST_DIR}"
+       debug="on" >
+       <!--compilerarg value="-Xlint:unchecked"/-->
+    </javac>   
+  </target>
+
+  <target name="clean">
+    <delete dir="${DEST_DIR}"/>
+  </target>
+  
+  <target name="doc">
+    <mkdir dir="${DOC_DIR}"/>
+    <javadoc packagenames="edu.ustc.cs.compile.*" 
+             sourcepath="${SRC_DIR}" destdir="${DOC_DIR}"
+             classpath="${CLASSPATH}"
+             Windowtitle="Lab1-SimpleMiniJOOL Interpreter" />
+  </target>
+</project>

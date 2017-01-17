@@ -1,0 +1,1273 @@
+package edu.ustc.cs.compile.lexer;
+
+/**
+ * This class is generated automatically by LexerCodeGenerator.
+ */
+public class LexerCode {
+    private NFAState start, end;
+    private NFAState Start = new NFAState();
+    private NFAState End   = new NFAState();
+    public NFAState getNFA() {
+        { // NFA for STATIC
+            { // "static"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs32 = start;
+                NFAState ns32;
+                ns32 = new NFAState();
+                cs32.addTransition((char)115, ns32);
+                cs32 = ns32;
+                ns32 = new NFAState();
+                cs32.addTransition((char)116, ns32);
+                cs32 = ns32;
+                ns32 = new NFAState();
+                cs32.addTransition((char)97, ns32);
+                cs32 = ns32;
+                ns32 = new NFAState();
+                cs32.addTransition((char)116, ns32);
+                cs32 = ns32;
+                ns32 = new NFAState();
+                cs32.addTransition((char)105, ns32);
+                cs32 = ns32;
+                cs32.addTransition((char)99, end);
+            }
+            end.makeFinal(2147483647, 1);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for INT
+            { // "int"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs33 = start;
+                NFAState ns33;
+                ns33 = new NFAState();
+                cs33.addTransition((char)105, ns33);
+                cs33 = ns33;
+                ns33 = new NFAState();
+                cs33.addTransition((char)110, ns33);
+                cs33 = ns33;
+                cs33.addTransition((char)116, end);
+            }
+            end.makeFinal(2147483646, 2);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for BOOLEAN
+            { // "boolean"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs34 = start;
+                NFAState ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)98, ns34);
+                cs34 = ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)111, ns34);
+                cs34 = ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)111, ns34);
+                cs34 = ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)108, ns34);
+                cs34 = ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)101, ns34);
+                cs34 = ns34;
+                ns34 = new NFAState();
+                cs34.addTransition((char)97, ns34);
+                cs34 = ns34;
+                cs34.addTransition((char)110, end);
+            }
+            end.makeFinal(2147483645, 3);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for VOID
+            { // "void"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs35 = start;
+                NFAState ns35;
+                ns35 = new NFAState();
+                cs35.addTransition((char)118, ns35);
+                cs35 = ns35;
+                ns35 = new NFAState();
+                cs35.addTransition((char)111, ns35);
+                cs35 = ns35;
+                ns35 = new NFAState();
+                cs35.addTransition((char)105, ns35);
+                cs35 = ns35;
+                cs35.addTransition((char)100, end);
+            }
+            end.makeFinal(2147483644, 4);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for CLASS
+            { // "class"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs36 = start;
+                NFAState ns36;
+                ns36 = new NFAState();
+                cs36.addTransition((char)99, ns36);
+                cs36 = ns36;
+                ns36 = new NFAState();
+                cs36.addTransition((char)108, ns36);
+                cs36 = ns36;
+                ns36 = new NFAState();
+                cs36.addTransition((char)97, ns36);
+                cs36 = ns36;
+                ns36 = new NFAState();
+                cs36.addTransition((char)115, ns36);
+                cs36 = ns36;
+                cs36.addTransition((char)115, end);
+            }
+            end.makeFinal(2147483643, 5);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for EXTENDS
+            { // "extends"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs37 = start;
+                NFAState ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)101, ns37);
+                cs37 = ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)120, ns37);
+                cs37 = ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)116, ns37);
+                cs37 = ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)101, ns37);
+                cs37 = ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)110, ns37);
+                cs37 = ns37;
+                ns37 = new NFAState();
+                cs37.addTransition((char)100, ns37);
+                cs37 = ns37;
+                cs37.addTransition((char)115, end);
+            }
+            end.makeFinal(2147483642, 6);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for NEW
+            { // "new"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs38 = start;
+                NFAState ns38;
+                ns38 = new NFAState();
+                cs38.addTransition((char)110, ns38);
+                cs38 = ns38;
+                ns38 = new NFAState();
+                cs38.addTransition((char)101, ns38);
+                cs38 = ns38;
+                cs38.addTransition((char)119, end);
+            }
+            end.makeFinal(2147483641, 7);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for THIS
+            { // "this"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs39 = start;
+                NFAState ns39;
+                ns39 = new NFAState();
+                cs39.addTransition((char)116, ns39);
+                cs39 = ns39;
+                ns39 = new NFAState();
+                cs39.addTransition((char)104, ns39);
+                cs39 = ns39;
+                ns39 = new NFAState();
+                cs39.addTransition((char)105, ns39);
+                cs39 = ns39;
+                cs39.addTransition((char)115, end);
+            }
+            end.makeFinal(2147483640, 8);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for IF
+            { // "if"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs40 = start;
+                NFAState ns40;
+                ns40 = new NFAState();
+                cs40.addTransition((char)105, ns40);
+                cs40 = ns40;
+                cs40.addTransition((char)102, end);
+            }
+            end.makeFinal(2147483639, 9);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for ELSE
+            { // "else"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs41 = start;
+                NFAState ns41;
+                ns41 = new NFAState();
+                cs41.addTransition((char)101, ns41);
+                cs41 = ns41;
+                ns41 = new NFAState();
+                cs41.addTransition((char)108, ns41);
+                cs41 = ns41;
+                ns41 = new NFAState();
+                cs41.addTransition((char)115, ns41);
+                cs41 = ns41;
+                cs41.addTransition((char)101, end);
+            }
+            end.makeFinal(2147483638, 10);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for WHILE
+            { // "while"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs42 = start;
+                NFAState ns42;
+                ns42 = new NFAState();
+                cs42.addTransition((char)119, ns42);
+                cs42 = ns42;
+                ns42 = new NFAState();
+                cs42.addTransition((char)104, ns42);
+                cs42 = ns42;
+                ns42 = new NFAState();
+                cs42.addTransition((char)105, ns42);
+                cs42 = ns42;
+                ns42 = new NFAState();
+                cs42.addTransition((char)108, ns42);
+                cs42 = ns42;
+                cs42.addTransition((char)101, end);
+            }
+            end.makeFinal(2147483637, 11);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for RETURN
+            { // "return"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs43 = start;
+                NFAState ns43;
+                ns43 = new NFAState();
+                cs43.addTransition((char)114, ns43);
+                cs43 = ns43;
+                ns43 = new NFAState();
+                cs43.addTransition((char)101, ns43);
+                cs43 = ns43;
+                ns43 = new NFAState();
+                cs43.addTransition((char)116, ns43);
+                cs43 = ns43;
+                ns43 = new NFAState();
+                cs43.addTransition((char)117, ns43);
+                cs43 = ns43;
+                ns43 = new NFAState();
+                cs43.addTransition((char)114, ns43);
+                cs43 = ns43;
+                cs43.addTransition((char)110, end);
+            }
+            end.makeFinal(2147483636, 12);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for NULL
+            { // "null"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs44 = start;
+                NFAState ns44;
+                ns44 = new NFAState();
+                cs44.addTransition((char)110, ns44);
+                cs44 = ns44;
+                ns44 = new NFAState();
+                cs44.addTransition((char)117, ns44);
+                cs44 = ns44;
+                ns44 = new NFAState();
+                cs44.addTransition((char)108, ns44);
+                cs44 = ns44;
+                cs44.addTransition((char)108, end);
+            }
+            end.makeFinal(2147483635, 13);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for PRINT
+            { // "print"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs45 = start;
+                NFAState ns45;
+                ns45 = new NFAState();
+                cs45.addTransition((char)112, ns45);
+                cs45 = ns45;
+                ns45 = new NFAState();
+                cs45.addTransition((char)114, ns45);
+                cs45 = ns45;
+                ns45 = new NFAState();
+                cs45.addTransition((char)105, ns45);
+                cs45 = ns45;
+                ns45 = new NFAState();
+                cs45.addTransition((char)110, ns45);
+                cs45 = ns45;
+                cs45.addTransition((char)116, end);
+            }
+            end.makeFinal(2147483634, 14);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for IDENTIFIER
+        {
+            {
+                // Concatenation
+        {
+            {
+                // OR node
+                {
+                    // Range transition
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransitionRange('a', 'z', end);
+                }
+                NFAState ls5 = start;
+                NFAState le5 = end;
+                {
+                    // Range transition
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransitionRange('A', 'Z', end);
+                }
+                NFAState rs5 = start;
+                NFAState re5 = end;
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition(NFAState.EPSILON, ls5);
+                start.addTransition(NFAState.EPSILON, rs5);
+                le5.addTransition(NFAState.EPSILON, end);
+                re5.addTransition(NFAState.EPSILON, end);
+            }
+        }
+                NFAState ls8 = start;
+                NFAState le8 = end;
+                {
+                    { // * or + node
+                        {
+                            // OR node
+        {
+            {
+                // Range transition
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransitionRange('0', '9', end);
+            }
+        }
+                            NFAState ls10 = start;
+                            NFAState le10 = end;
+        {
+            {
+                // OR node
+                {
+                    // Range transition
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransitionRange('a', 'z', end);
+                }
+                NFAState ls5 = start;
+                NFAState le5 = end;
+                {
+                    // Range transition
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransitionRange('A', 'Z', end);
+                }
+                NFAState rs5 = start;
+                NFAState re5 = end;
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition(NFAState.EPSILON, ls5);
+                start.addTransition(NFAState.EPSILON, rs5);
+                le5.addTransition(NFAState.EPSILON, end);
+                re5.addTransition(NFAState.EPSILON, end);
+            }
+        }
+                            NFAState rs10 = start;
+                            NFAState re10 = end;
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition(NFAState.EPSILON, ls10);
+                            start.addTransition(NFAState.EPSILON, rs10);
+                            le10.addTransition(NFAState.EPSILON, end);
+                            re10.addTransition(NFAState.EPSILON, end);
+                        }
+                        NFAState os11 = start;
+                        NFAState oe11 = end;
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition(NFAState.EPSILON, os11);
+                        oe11.addTransition(NFAState.EPSILON, end);
+                        oe11.addTransition(NFAState.EPSILON, os11);
+                        // * node
+                        start.addTransition(NFAState.EPSILON, end);
+                    }
+                }
+                NFAState rs8 = start;
+                NFAState re8 = end;
+                le8.addTransition(NFAState.EPSILON, rs8);
+                start = ls8;
+                end = re8;
+            }
+        }
+            end.makeFinal(2147483633, 15);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for BOOLEAN_LITERAL
+            { // "true"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs46 = start;
+                NFAState ns46;
+                ns46 = new NFAState();
+                cs46.addTransition((char)116, ns46);
+                cs46 = ns46;
+                ns46 = new NFAState();
+                cs46.addTransition((char)114, ns46);
+                cs46 = ns46;
+                ns46 = new NFAState();
+                cs46.addTransition((char)117, ns46);
+                cs46 = ns46;
+                cs46.addTransition((char)101, end);
+            }
+            end.makeFinal(2147483632, 16);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for BOOLEAN_LITERAL
+            { // "false"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs47 = start;
+                NFAState ns47;
+                ns47 = new NFAState();
+                cs47.addTransition((char)102, ns47);
+                cs47 = ns47;
+                ns47 = new NFAState();
+                cs47.addTransition((char)97, ns47);
+                cs47 = ns47;
+                ns47 = new NFAState();
+                cs47.addTransition((char)108, ns47);
+                cs47 = ns47;
+                ns47 = new NFAState();
+                cs47.addTransition((char)115, ns47);
+                cs47 = ns47;
+                cs47.addTransition((char)101, end);
+            }
+            end.makeFinal(2147483631, 16);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for INTEGER_LITERAL
+            {
+                { // * or + node
+        {
+            {
+                // Range transition
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransitionRange('0', '9', end);
+            }
+        }
+                    NFAState os49 = start;
+                    NFAState oe49 = end;
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition(NFAState.EPSILON, os49);
+                    oe49.addTransition(NFAState.EPSILON, end);
+                    oe49.addTransition(NFAState.EPSILON, os49);
+                }
+            }
+            end.makeFinal(2147483630, 17);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for STRING_LITERAL
+        {
+            {
+                // Concatenation
+                {
+                    // Concatenation
+                    { // """
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition((char)34, end);
+                    }
+                    NFAState ls23 = start;
+                    NFAState le23 = end;
+                    {
+                        { // * or + node
+                            {
+                                // OR node
+        {
+            {
+                // OR node
+                {
+                    // OR node
+                    {
+                        // OR node
+                        { // " "
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition((char)32, end);
+                        }
+                        NFAState ls14 = start;
+                        NFAState le14 = end;
+                        { // "!"
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition((char)33, end);
+                        }
+                        NFAState rs14 = start;
+                        NFAState re14 = end;
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition(NFAState.EPSILON, ls14);
+                        start.addTransition(NFAState.EPSILON, rs14);
+                        le14.addTransition(NFAState.EPSILON, end);
+                        re14.addTransition(NFAState.EPSILON, end);
+                    }
+                    NFAState ls13 = start;
+                    NFAState le13 = end;
+                    {
+                        // Range transition
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransitionRange('#', '[', end);
+                    }
+                    NFAState rs13 = start;
+                    NFAState re13 = end;
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition(NFAState.EPSILON, ls13);
+                    start.addTransition(NFAState.EPSILON, rs13);
+                    le13.addTransition(NFAState.EPSILON, end);
+                    re13.addTransition(NFAState.EPSILON, end);
+                }
+                NFAState ls12 = start;
+                NFAState le12 = end;
+                {
+                    // Range transition
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransitionRange(']', '~', end);
+                }
+                NFAState rs12 = start;
+                NFAState re12 = end;
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition(NFAState.EPSILON, ls12);
+                start.addTransition(NFAState.EPSILON, rs12);
+                le12.addTransition(NFAState.EPSILON, end);
+                re12.addTransition(NFAState.EPSILON, end);
+            }
+        }
+                                NFAState ls25 = start;
+                                NFAState le25 = end;
+        {
+            {
+                // Concatenation
+                { // "\"
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition((char)92, end);
+                }
+                NFAState ls17 = start;
+                NFAState le17 = end;
+                {
+                    // OR node
+                    {
+                        // OR node
+                        {
+                            // OR node
+                            {
+                                // OR node
+                                { // "'"
+                                    start = new NFAState();
+                                    end = new NFAState();
+                                    start.addTransition((char)39, end);
+                                }
+                                NFAState ls21 = start;
+                                NFAState le21 = end;
+                                { // """
+                                    start = new NFAState();
+                                    end = new NFAState();
+                                    start.addTransition((char)34, end);
+                                }
+                                NFAState rs21 = start;
+                                NFAState re21 = end;
+                                start = new NFAState();
+                                end = new NFAState();
+                                start.addTransition(NFAState.EPSILON, ls21);
+                                start.addTransition(NFAState.EPSILON, rs21);
+                                le21.addTransition(NFAState.EPSILON, end);
+                                re21.addTransition(NFAState.EPSILON, end);
+                            }
+                            NFAState ls20 = start;
+                            NFAState le20 = end;
+                            { // "\"
+                                start = new NFAState();
+                                end = new NFAState();
+                                start.addTransition((char)92, end);
+                            }
+                            NFAState rs20 = start;
+                            NFAState re20 = end;
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition(NFAState.EPSILON, ls20);
+                            start.addTransition(NFAState.EPSILON, rs20);
+                            le20.addTransition(NFAState.EPSILON, end);
+                            re20.addTransition(NFAState.EPSILON, end);
+                        }
+                        NFAState ls19 = start;
+                        NFAState le19 = end;
+                        { // "n"
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition((char)110, end);
+                        }
+                        NFAState rs19 = start;
+                        NFAState re19 = end;
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition(NFAState.EPSILON, ls19);
+                        start.addTransition(NFAState.EPSILON, rs19);
+                        le19.addTransition(NFAState.EPSILON, end);
+                        re19.addTransition(NFAState.EPSILON, end);
+                    }
+                    NFAState ls18 = start;
+                    NFAState le18 = end;
+                    { // " "
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition((char)32, end);
+                    }
+                    NFAState rs18 = start;
+                    NFAState re18 = end;
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition(NFAState.EPSILON, ls18);
+                    start.addTransition(NFAState.EPSILON, rs18);
+                    le18.addTransition(NFAState.EPSILON, end);
+                    re18.addTransition(NFAState.EPSILON, end);
+                }
+                NFAState rs17 = start;
+                NFAState re17 = end;
+                le17.addTransition(NFAState.EPSILON, rs17);
+                start = ls17;
+                end = re17;
+            }
+        }
+                                NFAState rs25 = start;
+                                NFAState re25 = end;
+                                start = new NFAState();
+                                end = new NFAState();
+                                start.addTransition(NFAState.EPSILON, ls25);
+                                start.addTransition(NFAState.EPSILON, rs25);
+                                le25.addTransition(NFAState.EPSILON, end);
+                                re25.addTransition(NFAState.EPSILON, end);
+                            }
+                            NFAState os26 = start;
+                            NFAState oe26 = end;
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition(NFAState.EPSILON, os26);
+                            oe26.addTransition(NFAState.EPSILON, end);
+                            oe26.addTransition(NFAState.EPSILON, os26);
+                            // * node
+                            start.addTransition(NFAState.EPSILON, end);
+                        }
+                    }
+                    NFAState rs23 = start;
+                    NFAState re23 = end;
+                    le23.addTransition(NFAState.EPSILON, rs23);
+                    start = ls23;
+                    end = re23;
+                }
+                NFAState ls22 = start;
+                NFAState le22 = end;
+                { // """
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition((char)34, end);
+                }
+                NFAState rs22 = start;
+                NFAState re22 = end;
+                le22.addTransition(NFAState.EPSILON, rs22);
+                start = ls22;
+                end = re22;
+            }
+        }
+            end.makeFinal(2147483629, 18);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for RBRACE
+            { // "}"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)125, end);
+            }
+            end.makeFinal(2147483628, 22);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LBRACE
+            { // "{"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)123, end);
+            }
+            end.makeFinal(2147483627, 21);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for RPAREN
+            { // ")"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)41, end);
+            }
+            end.makeFinal(2147483626, 20);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LPAREN
+            { // "("
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)40, end);
+            }
+            end.makeFinal(2147483625, 19);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for COMMA
+            { // ","
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)44, end);
+            }
+            end.makeFinal(2147483624, 24);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for SEMICOLON
+            { // ";"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)59, end);
+            }
+            end.makeFinal(2147483623, 23);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for PERIOD
+            { // "."
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)46, end);
+            }
+            end.makeFinal(2147483622, 25);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for PLUS
+            { // "+"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)43, end);
+            }
+            end.makeFinal(2147483621, 26);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MINUS
+            { // "-"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)45, end);
+            }
+            end.makeFinal(2147483620, 27);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MULT
+            { // "*"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs50 = start;
+                NFAState ns50;
+                cs50.addTransition((char)42, end);
+            }
+            end.makeFinal(2147483619, 28);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for DIV
+            { // "/"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs51 = start;
+                NFAState ns51;
+                cs51.addTransition((char)47, end);
+            }
+            end.makeFinal(2147483618, 29);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MOD
+            { // "%"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs52 = start;
+                NFAState ns52;
+                cs52.addTransition((char)37, end);
+            }
+            end.makeFinal(2147483617, 30);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for EQ
+            { // "="
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483616, 31);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for NOT
+            { // "!"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)33, end);
+            }
+            end.makeFinal(2147483615, 32);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for ANDAND
+            { // "&&"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs53 = start;
+                NFAState ns53;
+                ns53 = new NFAState();
+                cs53.addTransition((char)38, ns53);
+                cs53 = ns53;
+                cs53.addTransition((char)38, end);
+            }
+            end.makeFinal(2147483614, 33);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for OROR
+            { // "||"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs54 = start;
+                NFAState ns54;
+                ns54 = new NFAState();
+                cs54.addTransition((char)124, ns54);
+                cs54 = ns54;
+                cs54.addTransition((char)124, end);
+            }
+            end.makeFinal(2147483613, 34);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for GT
+            { // ">"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs55 = start;
+                NFAState ns55;
+                cs55.addTransition((char)62, end);
+            }
+            end.makeFinal(2147483612, 35);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LT
+            { // "<"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs56 = start;
+                NFAState ns56;
+                cs56.addTransition((char)60, end);
+            }
+            end.makeFinal(2147483611, 36);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for EQEQ
+            { // "=="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs57 = start;
+                NFAState ns57;
+                ns57 = new NFAState();
+                cs57.addTransition((char)61, ns57);
+                cs57 = ns57;
+                cs57.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483610, 37);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for NOTEQ
+            { // "!="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs58 = start;
+                NFAState ns58;
+                ns58 = new NFAState();
+                cs58.addTransition((char)33, ns58);
+                cs58 = ns58;
+                cs58.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483609, 38);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LTEQ
+            { // "<="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs59 = start;
+                NFAState ns59;
+                ns59 = new NFAState();
+                cs59.addTransition((char)60, ns59);
+                cs59 = ns59;
+                cs59.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483608, 39);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for GTEQ
+            { // ">="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs60 = start;
+                NFAState ns60;
+                ns60 = new NFAState();
+                cs60.addTransition((char)62, ns60);
+                cs60 = ns60;
+                cs60.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483607, 40);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LSHIFT
+            { // "<<"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs61 = start;
+                NFAState ns61;
+                ns61 = new NFAState();
+                cs61.addTransition((char)60, ns61);
+                cs61 = ns61;
+                cs61.addTransition((char)60, end);
+            }
+            end.makeFinal(2147483606, 41);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for RSHIFT
+            { // ">>"
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs62 = start;
+                NFAState ns62;
+                ns62 = new NFAState();
+                cs62.addTransition((char)62, ns62);
+                cs62 = ns62;
+                cs62.addTransition((char)62, end);
+            }
+            end.makeFinal(2147483605, 42);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for PLUSEQ
+            { // "+="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs63 = start;
+                NFAState ns63;
+                ns63 = new NFAState();
+                cs63.addTransition((char)43, ns63);
+                cs63 = ns63;
+                cs63.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483604, 43);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MINUSEQ
+            { // "-="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs64 = start;
+                NFAState ns64;
+                ns64 = new NFAState();
+                cs64.addTransition((char)45, ns64);
+                cs64 = ns64;
+                cs64.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483603, 44);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MULTEQ
+            { // "*="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs65 = start;
+                NFAState ns65;
+                ns65 = new NFAState();
+                cs65.addTransition((char)42, ns65);
+                cs65 = ns65;
+                cs65.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483602, 45);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for DIVEQ
+            { // "/="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs66 = start;
+                NFAState ns66;
+                ns66 = new NFAState();
+                cs66.addTransition((char)47, ns66);
+                cs66 = ns66;
+                cs66.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483601, 46);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for MODEQ
+            { // "%="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs67 = start;
+                NFAState ns67;
+                ns67 = new NFAState();
+                cs67.addTransition((char)37, ns67);
+                cs67 = ns67;
+                cs67.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483600, 47);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for LSHIFTEQ
+            { // "<<="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs68 = start;
+                NFAState ns68;
+                ns68 = new NFAState();
+                cs68.addTransition((char)60, ns68);
+                cs68 = ns68;
+                ns68 = new NFAState();
+                cs68.addTransition((char)60, ns68);
+                cs68 = ns68;
+                cs68.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483599, 48);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for RSHIFTEQ
+            { // ">>="
+                start = new NFAState();
+                end = new NFAState();
+                NFAState cs69 = start;
+                NFAState ns69;
+                ns69 = new NFAState();
+                cs69.addTransition((char)62, ns69);
+                cs69 = ns69;
+                ns69 = new NFAState();
+                cs69.addTransition((char)62, ns69);
+                cs69 = ns69;
+                cs69.addTransition((char)61, end);
+            }
+            end.makeFinal(2147483598, 49);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for IGNORE
+            { // "\n"
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition((char)10, end);
+            }
+            end.makeFinal(2147483597, 0);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for IGNORE
+        {
+            {
+                // Concatenation
+                { // "//"
+                    start = new NFAState();
+                    end = new NFAState();
+                    NFAState cs29 = start;
+                    NFAState ns29;
+                    ns29 = new NFAState();
+                    cs29.addTransition((char)47, ns29);
+                    cs29 = ns29;
+                    cs29.addTransition((char)47, end);
+                }
+                NFAState ls28 = start;
+                NFAState le28 = end;
+                {
+                    { // * or + node
+        {
+            {
+                // Range transition
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransitionRange(' ', '~', end);
+            }
+        }
+                        NFAState os31 = start;
+                        NFAState oe31 = end;
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition(NFAState.EPSILON, os31);
+                        oe31.addTransition(NFAState.EPSILON, end);
+                        oe31.addTransition(NFAState.EPSILON, os31);
+                        // * node
+                        start.addTransition(NFAState.EPSILON, end);
+                    }
+                }
+                NFAState rs28 = start;
+                NFAState re28 = end;
+                le28.addTransition(NFAState.EPSILON, rs28);
+                start = ls28;
+                end = re28;
+            }
+        }
+            end.makeFinal(2147483596, 0);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        { // NFA for IGNORE
+        {
+            {
+                // OR node
+                {
+                    // OR node
+                    {
+                        // OR node
+                        {
+                            // OR node
+                            { // " "
+                                start = new NFAState();
+                                end = new NFAState();
+                                start.addTransition((char)32, end);
+                            }
+                            NFAState ls3 = start;
+                            NFAState le3 = end;
+                            { // "\n"
+                                start = new NFAState();
+                                end = new NFAState();
+                                start.addTransition((char)10, end);
+                            }
+                            NFAState rs3 = start;
+                            NFAState re3 = end;
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition(NFAState.EPSILON, ls3);
+                            start.addTransition(NFAState.EPSILON, rs3);
+                            le3.addTransition(NFAState.EPSILON, end);
+                            re3.addTransition(NFAState.EPSILON, end);
+                        }
+                        NFAState ls2 = start;
+                        NFAState le2 = end;
+                        { // "\r"
+                            start = new NFAState();
+                            end = new NFAState();
+                            start.addTransition((char)13, end);
+                        }
+                        NFAState rs2 = start;
+                        NFAState re2 = end;
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition(NFAState.EPSILON, ls2);
+                        start.addTransition(NFAState.EPSILON, rs2);
+                        le2.addTransition(NFAState.EPSILON, end);
+                        re2.addTransition(NFAState.EPSILON, end);
+                    }
+                    NFAState ls1 = start;
+                    NFAState le1 = end;
+                    { // "\r"
+                        start = new NFAState();
+                        end = new NFAState();
+                        start.addTransition((char)13, end);
+                    }
+                    NFAState rs1 = start;
+                    NFAState re1 = end;
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition(NFAState.EPSILON, ls1);
+                    start.addTransition(NFAState.EPSILON, rs1);
+                    le1.addTransition(NFAState.EPSILON, end);
+                    re1.addTransition(NFAState.EPSILON, end);
+                }
+                NFAState ls0 = start;
+                NFAState le0 = end;
+                { // "\t"
+                    start = new NFAState();
+                    end = new NFAState();
+                    start.addTransition((char)9, end);
+                }
+                NFAState rs0 = start;
+                NFAState re0 = end;
+                start = new NFAState();
+                end = new NFAState();
+                start.addTransition(NFAState.EPSILON, ls0);
+                start.addTransition(NFAState.EPSILON, rs0);
+                le0.addTransition(NFAState.EPSILON, end);
+                re0.addTransition(NFAState.EPSILON, end);
+            }
+        }
+            end.makeFinal(2147483595, 0);
+            Start.addTransition(NFAState.EPSILON, start);
+            end.addTransition(NFAState.EPSILON, End);
+        }
+        return Start;
+    }
+    public LexerCode() {
+    }
+}

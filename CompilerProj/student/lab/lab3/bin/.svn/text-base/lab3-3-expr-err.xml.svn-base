@@ -1,0 +1,56 @@
+<project name="lab3-3" default="build" basedir="..">
+	<description>
+		用JavaCC生成一个分析器
+	</description>
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="CFG_DIR" location="config"/>
+    <property name="BIN_DIR" location="bin"/>
+    
+    <property name="ROOT_DIR" location="../.."/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    
+    <property name="PARSER_DIR" value="edu/ustc/cs/compile/parser/jjexpr"/>
+    <property name="PARSER_PACKAGE" value="edu.ustc.cs.compile.parser.jjexpr"/>
+    <property name="PARSER_CLASS" value="ExprParser"/>
+
+    <property name="JAVACC_DIR" location="${TOOL_DIR}/javacc"/>
+    <property name="JAVACC" value="${JAVACC_DIR}/javacc.jar"/>
+    
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB" value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                                    
+    <property name="PLATFORM_LIB" value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                                         ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+    
+    <property name="CLASSPATH" value="${JAVACC}:${AST_LIB}:${PLATFORM_LIB}"/>
+    
+    <target name="javacc" description="生成分析器">
+		<mkdir dir="${SRC_DIR}/${PARSER_DIR}"/>
+        <java fork="yes" classpath="${CLASSPATH}" classname="javacc">
+            <arg value="-STATIC=false"/>
+            <arg value="-OUTPUT_DIRECTORY=${SRC_DIR}/${PARSER_DIR}"/>
+            <arg value="${CFG_DIR}/JJ/expr_err.jj"/>
+        </java>
+    </target>
+    
+    <target name="build" depends="javacc" description="编译语法分析器">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               srcdir="${SRC_DIR}" destdir="${DEST_DIR}"
+               includes="${PARSER_DIR}/*.java"/>        
+    </target>
+	
+	<target name="run" depends="javacc">
+		<java fork="yes" classpath="${CLASSPATH}:${DEST_DIR}" classname="edu.ustc.cs.compile.parser.jjexpr.ExprEParser">
+		</java>
+	</target>
+    <target name="clean">
+        <delete dir="${DEST_DIR}/${PARSER_DIR}"/>
+    </target>
+</project>

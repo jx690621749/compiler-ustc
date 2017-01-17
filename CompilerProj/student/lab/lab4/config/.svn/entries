@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab4/config
+svn://192.168.1.254
+
+
+
+2008-04-12T18:14:42.245004Z
+191
+yzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+configure.xml
+file
+
+
+
+
+2008-04-12T02:50:54.000000Z
+607c2092dd2b0cb747f9c764b24e6c27
+2008-04-12T18:14:42.245004Z
+191
+yzhang
+
+configure.xsd
+file
+
+
+
+
+2008-04-12T02:50:54.000000Z
+3e52718749dbcf63b7b59bc0470926ce
+2008-04-12T18:14:42.245004Z
+191
+yzhang
+

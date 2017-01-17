@@ -1,0 +1,26 @@
+class Class1 {
+	int a;
+	
+	void output1() {
+		print(a);
+	}
+}
+
+class Class2 extends Class1 {
+	int b;
+	
+	void output2() {
+		a =a + b;
+		print(a + b);
+	}
+}
+
+// This is the main class
+class Main {
+	static void main() {
+		Class2 c = new Class2();
+		c.output1();
+		c.output2();
+		print("d,!\nHello, world");
+	}
+}

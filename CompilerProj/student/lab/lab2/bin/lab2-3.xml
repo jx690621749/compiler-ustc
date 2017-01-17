@@ -1,0 +1,49 @@
+<project name="lab2-3" default="all">
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB"
+              value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                     
+    <property name="JAVACUP_DIR" location="${TOOL_DIR}/java-cup"/>
+    <property name="JAVACUP_RUNTIME_LIB" value="${JAVACUP_DIR}/java-cup-11a-runtime.jar"/>
+    
+    <property name="CLASSPATH" 
+              value="${DEST_DIR}/${LEXER_DIR}:
+                     ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar:
+                     ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                     ${AST_LIB}:${JAVACUP_RUNTIME_LIB}:
+                     ${LIB_DIR}/edu.ustc.cs.compile.parser.mlexspec.jar"/>
+                     
+    <target name="all">
+        <antcall target="build"/>
+        <antcall target="run"/>
+    </target>
+    
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${LEXER_DIR}/Main.java,
+                         ${LEXER_DIR}/Symbol.java,
+                         ${LEXER_DIR}/NFAGenerator.java,
+                         ${LEXER_DIR}/NFAState.java,
+                         ${LEXER_DIR}/NFASimulator.java"/>
+    </target>
+    
+    <target name="run">
+        <java classname="edu.ustc.cs.compile.lexer.Main"
+              classpath="${CLASSPATH}:${DEST_DIR}">
+            <arg value="3" />
+        </java>
+    </target>
+    
+  <target name="doc">
+    <mkdir dir="${DOC_DIR}"/>
+    <javadoc packagenames="edu.ustc.cs.compile.*" 
+             sourcepath="${SRC_DIR}" destdir="${DOC_DIR}"
+             classpath="${CLASSPATH}"
+             Windowtitle="Lab2-Lexer" />
+  </target>
+</project>

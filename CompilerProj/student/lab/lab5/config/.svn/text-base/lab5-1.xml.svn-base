@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<configs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="configure.xsd">
+  <boolCfgs>
+    <boolCfg name="debug" value="true"/>
+    <boolCfg name="dispAST" value="true"/>
+    <boolCfg name="genAsm" value="true"/>
+    <boolCfg name="exec" value="false"/>
+  </boolCfgs>
+  
+  <strCfgs>
+    <strCfg name="srcFile" value="../test/test.mj"/>
+    <strCfg name="asmFile" value="a.s"/>
+    <strCfg name="parserClass" value="edu.ustc.cs.compile.parser.skipoominijool.Parser"/>
+    <strCfg name="genClass" value="edu.ustc.cs.compile.generator.mips.Generator1"/>
+    <strCfg name="dumpClass" value="edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump"/>
+    <strCfg name="spimPath" value="/usr/local/bin/spim"/>
+    <strCfg name="gccPath" value="/usr/bin/gcc"/>
+  </strCfgs>
+  
+  <archCfgs>
+    <arch value="x86"/>
+  </archCfgs>
+</configs>

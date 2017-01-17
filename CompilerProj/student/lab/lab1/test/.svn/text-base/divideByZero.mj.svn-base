@@ -1,0 +1,16 @@
+class DivideByZero {
+	static void Main() {
+		i1 = 10;
+		i2 = 5;
+		i3 = 5;
+		i4 = 0;
+		
+		/**
+		 * Uncomment only one statement following each time to test whether 
+		 * your interpreter can find the DivideByZero error.
+		 */
+		// Print(i1/0);
+		// Print(i1/i4);
+		// Print(i1/(i2-i3));
+	}
+}

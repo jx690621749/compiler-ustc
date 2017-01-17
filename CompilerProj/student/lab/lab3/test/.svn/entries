@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab3/test
+svn://192.168.1.254
+
+
+
+2008-04-11T00:44:10.844308Z
+183
+hzzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+exp_list.txt
+file
+
+
+
+
+2008-04-08T02:24:30.000000Z
+588420782f533f129bda040d57af7db1
+2008-04-08T15:37:02.728369Z
+159
+compiler
+
+exp_list_err.txt
+file
+
+
+
+
+2008-04-12T02:50:54.000000Z
+1b4e948ad054aba070bb621821386c55
+2008-04-11T00:44:10.844308Z
+183
+hzzhang
+

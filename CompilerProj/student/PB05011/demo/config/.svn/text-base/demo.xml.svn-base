@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ 该文件是实验平台配置文件的示例，你需要根据需要做相应的修改。
+ 这个文件中列出了所有可以使用的配置条目，别每个条目的值为默认配置。 
+ 你可以删去不需要的条目。
+-->
+
+
+<configs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="configure.xsd">
+  <boolCfgs>
+    <boolCfg name="debug" value="true"/>          <!-- 是否输出调试信息 -->
+    <boolCfg name="dispAST" value="false"/>       <!-- 是否调用ASTView显示语法分析器得到的AST -->
+    <boolCfg name="doInterp" value="false"/>      <!-- 是否调用解释器 -->
+    <boolCfg name="doCheck" value="false"/>       <!-- 是否调用语义检查器 -->
+    <boolCfg name="doOpt" value="false"/>         <!-- 是否调用优化器 -->
+    <boolCfg name="dispOptAST" value="false"/>    <!-- 是否调用ASTView显示优化器得到的AST -->
+    <boolCfg name="genAsm" value="true"/>         <!-- 是否调用汇编代码生成器 -->
+    <boolCfg name="exec" value="true"/>           <!-- 是否编译执行汇编代码 -->
+  </boolCfgs>
+  
+  <strCfgs>
+    <strCfg name="srcFile" value=""/>             <!-- 源程序文件的路径和名称 -->
+    <strCfg name="asmFile" value="a.s"/>          <!-- 输出的汇编文件的路径和名称 -->
+    <strCfg name="exeFile" value="a.out"/>        <!-- gcc输出的文件的路径和名称 -->
+    <strCfg name="parserClass" 
+            value="edu.ustc.cs.compile.minijool.Parser"/>         <!-- 语法分析器类的全称类名 -->
+    <strCfg name="checkerClass"    
+            value="edu.ustc.cs.compile.minijool.Checker"/>        <!-- 语义检查器类的全称类名 -->
+    <strCfg name="interpClass" 
+            value="edu.ustc.cs.compile.minijool.Interpreter"/>    <!-- 解释器类的全称类名-->
+    <strCfg name="genClass" 
+            value="edu.ustc.cs.compile.minijool.Generator"/>      <!-- 汇编代码生成器类的全称类名 -->
+    <strCfg name="optClass" 
+            value="edu.ustc.cs.compile.minijool.Optimizer"/>      <!-- 优化器类的全称类名 -->
+    <strCfg name="dumpClass" 
+            value="edu.ustc.cs.compile.platform.utils.ASTView.plugin.GenericPropertyDump"/>  <!-- ASTView定制类的全称类名 -->
+    <strCfg name="spimPath" 
+            value="/usr/local/bin/spim"/>         <!-- spim的路径和可执行程序名 -->
+    <strCfg name="gccPath" 
+            value="/usr/bin/gcc"/>                <!-- gcc的路径和可执行程序名 -->
+  </strCfgs>
+  
+  <archCfgs>
+    <arch value="x86"/>   <!-- 生成的汇编代码的类型，另一个有效值为mips -->
+  </archCfgs>
+</configs>

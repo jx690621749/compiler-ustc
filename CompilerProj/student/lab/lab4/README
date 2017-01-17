@@ -1,0 +1,29 @@
+课程设计4说明
+
+1. 目录bin中包含以下文件：
+   build.xml  管理lab4的ant配置文件，默认编译src下的所有文件
+   run.bat    DOS批处理文件。不加任何参数运行时，会调用实验平台，并将config目录下的
+              configure.xml作为实验平台的配置文件。带参数-h运行时，会输出实验平台
+              的帮助信息。
+   run.sh     shell脚本文件。功能同run.bat。
+   
+2. 目录config中包含以下文件：
+   configure.xml   在实验平台上运行lab4所需的配置文件
+   configure.xsd   实验平台配置文件的Schema定义。请不要修改该文件。
+   
+3. 目录src/edu/ustc/cs/compile/checker/skipoominijool中包含如下文件：
+   Checker.java           SkipOOMiniJOOL程序语义检查器的框架代码
+   MSymTable.java         语义检查器需要的符号表的框架代码
+   SymTabGenerator.java   符号表生成器的框架代码
+   
+4. 目录test下提供一些测试文件，用于测试你的程序能否正常工作。你可以在这里添加更多的
+   测试文件。
+   
+5. 课程设计4的参考流程：
+   1）补全目录src中的文件。
+   2）在目录bin中执行ant编译课程设计4
+          ant
+   3）在目录bin中通过实验平台执行语义检查器
+          ./run.sh -cf ../config/configure.xml
+        或
+          run -cf ..\config\configure.xml

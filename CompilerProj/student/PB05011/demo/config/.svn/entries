@@ -1,0 +1,73 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/PB05011/demo/config
+svn://192.168.1.254
+
+
+
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+configure.xml
+file
+
+
+
+
+2008-04-12T02:51:00.000000Z
+9b013056ac4e4aedab848f962247e05f
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+
+JJ
+dir
+
+demo.xml
+file
+
+
+
+
+2008-04-12T02:51:00.000000Z
+ebd85fb079cf9b9b6d8ca40a86d50260
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+
+CUP
+dir
+
+JFlex
+dir
+
+configure.xsd
+file
+
+
+
+
+2008-04-12T02:51:00.000000Z
+3e52718749dbcf63b7b59bc0470926ce
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+

@@ -1,0 +1,54 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/tools/java-cup
+svn://192.168.1.254
+
+
+
+2008-04-06T23:07:06.025509Z
+123
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+java-cup-11a.jar
+file
+
+
+
+
+2008-04-08T02:23:44.000000Z
+2bda8c40abd0cbc295d3038643d6e4ec
+2008-04-06T23:07:06.025509Z
+123
+compiler
+has-props
+
+java-cup-11a-runtime.jar
+file
+
+
+
+
+2008-04-08T02:23:44.000000Z
+6c75ce4fb73451cbd4d1acbc2c67e842
+2008-04-06T23:07:06.025509Z
+123
+compiler
+has-props
+

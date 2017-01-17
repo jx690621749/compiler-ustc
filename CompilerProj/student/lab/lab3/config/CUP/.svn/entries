@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab3/config/CUP
+svn://192.168.1.254
+
+
+
+2008-04-11T18:43:13.134327Z
+186
+hzzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+expr.cup
+file
+
+
+
+
+2008-04-08T02:24:32.000000Z
+5b3e4c644359ae6d675c9ebb7ef0d3a2
+2008-04-07T23:55:50.065096Z
+152
+compiler
+
+expr_err.cup
+file
+
+
+
+
+2008-04-12T02:50:54.000000Z
+87fad0f50b95ba556d9323937114eb90
+2008-04-11T18:43:13.134327Z
+186
+hzzhang
+

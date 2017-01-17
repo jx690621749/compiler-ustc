@@ -1,0 +1,25 @@
+class WHILE {
+    static void Main() {
+        int i, j;
+        
+        i = 31;
+        j = 1;
+        while (i > 0) {
+            j *= 2;
+            i -= 1;
+            Print("j=");
+            Print(j);
+            Print("\n");
+        }
+
+        i = 100;
+        while (i > 0) {
+            j = 10;
+            while (j > 0) {
+                i -= 1;
+                j -= 1;
+            }
+            Print(i);
+        }
+    }
+}

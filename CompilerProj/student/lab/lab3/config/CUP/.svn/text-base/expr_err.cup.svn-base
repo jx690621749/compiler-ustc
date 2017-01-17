@@ -1,0 +1,292 @@
+// JavaCup specification for a sequence of assignment statements
+package edu.ustc.cs.compile.parser.expr;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.LinkedList;
+import java_cup.runtime.*;
+
+import org.eclipse.jdt.core.dom.*;
+import edu.ustc.cs.compile.platform.interfaces.ParserInterface;
+import edu.ustc.cs.compile.platform.interfaces.ParserException;
+import edu.ustc.cs.compile.platform.interfaces.InterRepresent;
+import edu.ustc.cs.compile.platform.util.ir.HIR;
+import edu.ustc.cs.compile.platform.util.ASTView.core.*;
+import edu.ustc.cs.compile.platform.util.ASTView.plugin.*;
+
+action code {:
+    private ASTNode root = null;
+    private AST ast = AST.newAST(AST.JLS3);
+    
+    private LinkedList<ExprError> errors = new LinkedList<ExprError>();
+    
+    public ASTNode getAST() {
+        return root;
+    }
+    
+    public LinkedList<ExprError> getErrors() {
+        return errors;
+    }
+    
+    private void addError(int errNo, String info, int line, int column) {
+        ExprError error = new ExprError(errNo, info, line, column);
+        errors.add(error);
+    }    
+:}
+
+parser code {:
+    private boolean success = false;
+    private boolean debug = true;
+    
+    protected int _error_sync_size = 1;
+
+    public InterRepresent doParse(File src) throws ParserException {
+        ExprELexer lexer = null;
+        try {
+            lexer = new ExprELexer( new FileReader(src) );
+        } catch (FileNotFoundException e) {
+            throw new ParserException();
+        }
+        
+        setScanner(lexer);
+        symbolFactory = new DefaultSymbolFactory();
+        try {
+            parse();
+        }catch (Exception e) {
+            System.err.println("Parser Exception.");
+            if (debug) {
+                e.printStackTrace();
+            }
+            throw new ParserException();
+        }
+        
+        LinkedList<ExprError> errors = action_obj.getErrors();
+        for (ExprError error : errors) {
+            System.err.println(error);
+        }
+        
+        if (!errors.isEmpty()) {
+            throw new ParserException();
+        }
+        
+        if (action_obj.getAST() == null) {
+            throw new ParserException();
+        }
+        
+        HIR ir = new HIR();
+        ir.setIR(action_obj.getAST());
+        
+        success = true;
+        return ir;
+    }
+        
+    public static void main(String[] argv)  throws ParserException{
+        String srcFileName = "E:/CompilerProj/student/lab/lab3/test/exp_list.txt";  // source file name
+        File srcFile = new File(srcFileName);
+        
+        ExprParser parser = new ExprParser();
+        HIR ir = null;
+        try {
+            ir = (HIR)parser.doParse(srcFile);
+        } catch (ParserException e) {
+            System.err.println("ParserException");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        
+        ASTViewer astviewer = new ASTViewer((ASTNode)ir.getIR(), new GenericPropertyDump());
+        astviewer.show();
+    }
+:}
+
+/* Terminals (tokens returned by the scanner). */
+terminal           SEMICOLON, PLUS, MINUS, MULT, DIV, EQ;
+terminal           LPAREN, RPAREN;
+terminal Integer   INTEGER_LITERAL;
+terminal String    IDENTIFIER;
+terminal           NOP;   // This terminal is used as a placeholder.                          
+
+/* Non terminals */
+non terminal goal;
+non terminal List sequence,statements;
+non terminal Statement statement;
+non terminal Assignment assignment;     
+non terminal Expression expression, term, factor;
+non terminal nop; // This nonterminal is used as a placeholder.
+
+/* Precedences */
+precedence left PLUS, MINUS;
+precedence left MULT, DIV;
+precedence left LPAREN;
+
+start with goal;
+
+/* The grammar */
+goal ::= 
+    sequence:seq
+    {:
+        root = ast.newBlock();
+        ((Block)root).statements().addAll(seq);
+    :}
+    ;
+        
+sequence ::=
+    {:  
+        RESULT = new LinkedList();
+    :}
+    | statements:bs
+    {:  
+        RESULT = bs;
+    :}
+    ;
+        
+statements ::= 
+    statement:as
+    {:
+        RESULT = new LinkedList();
+        if (as != null)     RESULT.add(as);
+    :}
+    | statements:s statement:as
+    {:
+        if (as != null) s.add(as);
+        RESULT = s;
+    :}
+    ;
+
+statement ::= 
+    assignment:as SEMICOLON
+    {:
+        RESULT = ast.newExpressionStatement(as);
+    :}
+    /*
+    | IDENTIFIER:id EQ:eq SEMICOLON
+    {:
+        errMsg("Illegal expression. Expect an expression after =.", eqleft);
+            
+        RESULT = null;
+    :}
+    | error SEMICOLON:semicolon
+    {:
+        errMsg("Illegal statement. Expect an assignment statement.", semicolonleft);
+          
+        RESULT = null;
+    :}
+    */
+    ;
+
+assignment ::=     
+    IDENTIFIER:id EQ expression:r
+    {:
+        RESULT = ast.newAssignment();
+        RESULT.setLeftHandSide(ast.newSimpleName(id));
+        RESULT.setOperator(Assignment.Operator.ASSIGN);
+        RESULT.setRightHandSide(r);
+    :}
+    | error EQ:eq expression:r
+    {:
+        addError(ExprError.LvalNotIDErr,
+                 "Illegal left operand. Expect an identifier.",
+                 eqleft, eqright);
+            
+        RESULT = ast.newAssignment();
+        RESULT.setLeftHandSide(ast.newSimpleName(new String("error")));
+        RESULT.setOperator(Assignment.Operator.ASSIGN);
+        RESULT.setRightHandSide(r);
+    :}
+    ;
+       
+expression ::=
+    term:t
+    {:
+        RESULT = t;
+    :}
+    | expression:e PLUS term:t
+    {:
+        InfixExpression ie = ast.newInfixExpression();
+        ie.setLeftOperand(e);
+        ie.setOperator(InfixExpression.Operator.PLUS);
+        ie.setRightOperand(t);
+        RESULT = ie;
+    :}
+    | expression:e MINUS term:t
+    {:
+        InfixExpression ie = ast.newInfixExpression();
+        ie.setLeftOperand(e);
+        ie.setOperator(InfixExpression.Operator.MINUS);
+        ie.setRightOperand(t);
+        RESULT = ie;
+    :}
+    ;
+        
+term ::=     
+    factor:f
+    {:
+        RESULT = f;
+    :}
+    | factor:f NOP
+    {:
+        RESULT = f;
+    :}
+    | factor:f nop
+    {:
+        RESULT = f;
+    :}
+    | term:t MULT factor:f
+    {:
+        InfixExpression ie = ast.newInfixExpression();
+        ie.setLeftOperand(t);
+        ie.setOperator(InfixExpression.Operator.TIMES);
+        ie.setRightOperand(f);
+        RESULT = ie;
+    :}
+    | term:t DIV factor:f
+    {:
+        InfixExpression ie = ast.newInfixExpression();
+        ie.setLeftOperand(t);
+        ie.setOperator(InfixExpression.Operator.DIVIDE);
+        ie.setRightOperand(f);
+        RESULT = ie;
+    :}
+    ;
+        
+factor ::=      
+    IDENTIFIER:id
+    {:
+        RESULT = ast.newSimpleName(id);
+    :} 
+    | INTEGER_LITERAL:n
+    {:
+        RESULT = ast.newNumberLiteral(n.toString());
+    :}
+    | LPAREN expression:e RPAREN 
+    {:
+        ParenthesizedExpression pe = ast.newParenthesizedExpression();
+        pe.setExpression(e);
+        RESULT = pe;
+    :}
+    /*
+    | LPAREN expression:e error
+    {:
+        errMsg("Illegal parenthesized expression. Expect a right parenthesis.", eleft);
+            
+        ParenthesizedExpression pe = ast.newParenthesizedExpression();
+        pe.setExpression(e);
+        RESULT = pe;
+    :}
+    | error:error
+    {:
+        errMsg("Illegal expression. Expect an expression like a+b, a-b, a*b, a/b, or (a),"+
+               " where a and b are identifiers, integer literals or legal expressions.", 
+               errorleft);
+            
+        RESULT = ast.newSimpleName(new String("error"));
+    :}
+    */
+    ;
+    
+nop ::= LPAREN RPAREN
+    {:
+    :}
+    ;

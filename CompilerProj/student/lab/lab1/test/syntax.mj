@@ -1,0 +1,71 @@
+/**
+ * This file demonstrates most syntactic structures 
+ * in SimpleMiniJOOL language. Your interpreter should
+ * correctly interpret them.
+ */
+
+class Syntax {
+    static void main() {
+        /* numbers */
+        i0 = 0x02;     // 0
+        i1 = 1;           // dec
+        i2 = 0x02;     // hex
+        i3 = 04;       // oct
+        
+        /* assignment */
+        i4 = i1;      // =
+        i4 += i1;     // +=
+        i4 -= i2;     // -=
+        i4 *= i3;     // *=
+        i4 /= i2;     // /=
+        i4 %= i2;     // %=
+                
+        /* binary operator */
+        i4 = i1 + i2;       // +
+        i4 = i2 - i3;       // -
+        i4 = i3 * i4;       // *
+        i4 = i4 / i1;       // /
+        i4 = i1 % i2;       // %
+        i4 = i1 && i0;       // &&
+        i4 = i1 || i0;       // ||
+        i4 = i4 < i3;       // <
+        i4 = i4 > i3;       // >
+        i4 = i4 <= i3;       // <=
+        i4 = i4 >= i3;       // >=
+        i4 = i4 == i3;       // ==
+        i4 = i4 != i3;       // !=
+
+        /* unary operator */
+        i4 = +i3;      // +
+        i4 = -i2;      // -
+        i4 = !i1;      // !
+
+        /* expression */
+        i4 = (i1+i2);   // expression in ()
+
+        /* statement */
+        if (i4)            // if statement without else branch
+            print(i4);    // method invocation
+        if (i4 > 10)    // if-else statement
+            print(i4);
+        else if (i4 > 5)
+            print(10);
+            
+           
+        if (i4 > 10)    // if-else statement where else branch
+            print(i4);     // is if-else statement
+        else if (i4 > 5)
+            print(5);
+        else 
+            print(0);
+
+		
+        while (i4+i3 > 10) {    // while statement
+            i4 -= i3;
+        }
+              
+        read(in);
+        print(in);
+        
+    }
+}

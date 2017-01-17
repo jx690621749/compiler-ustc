@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab3/config/JJ
+svn://192.168.1.254
+
+
+
+2008-04-09T23:14:02.998211Z
+179
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+expr.jj
+file
+
+
+
+
+2008-04-08T02:24:32.000000Z
+7754aecc3ddf767bf0e2c545c946fc79
+2008-04-07T23:55:49.988418Z
+151
+compiler
+
+expr_err.jj
+file
+
+
+
+
+2008-04-12T02:50:54.000000Z
+84c0ad4d556d4ea3871dad3ae99d45fe
+2008-04-09T23:14:02.998211Z
+179
+compiler
+

@@ -1,0 +1,34 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab2/config
+svn://192.168.1.254
+
+
+
+2008-04-06T23:30:24.700424Z
+131
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+MLex
+dir
+
+JFlex
+dir
+

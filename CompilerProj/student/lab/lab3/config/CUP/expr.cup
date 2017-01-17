@@ -1,0 +1,201 @@
+// JavaCup specification for a sequence of assignment statements
+package edu.ustc.cs.compile.parser.expr;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.LinkedList;
+import java_cup.runtime.*;
+
+import org.eclipse.jdt.core.dom.*;
+import edu.ustc.cs.compile.platform.interfaces.ParserInterface;
+import edu.ustc.cs.compile.platform.interfaces.ParserException;
+import edu.ustc.cs.compile.platform.interfaces.InterRepresent;
+import edu.ustc.cs.compile.platform.util.ir.HIR;
+import edu.ustc.cs.compile.platform.util.ASTView.core.*;
+import edu.ustc.cs.compile.platform.util.ASTView.plugin.*;
+
+action code {:
+    private ASTNode root = null;
+    private AST ast = AST.newAST(AST.JLS3);
+    public ASTNode getAST() {
+        return root;
+    }
+:}
+
+parser code {:
+    private boolean success = false;
+    private boolean debug = false;
+
+    public InterRepresent doParse(File src) throws ParserException {
+		ExprLexer lexer = null;
+        try {
+            lexer = new ExprLexer( new FileReader(src) );
+        } catch (FileNotFoundException e) {
+            throw new ParserException();
+        }
+        
+        setScanner(lexer);
+        symbolFactory = new DefaultSymbolFactory();
+        try {
+            parse();
+        }catch (Exception e) {
+            System.err.println("Parser Exception.");
+            if (debug) {
+                e.printStackTrace();
+            }
+            throw new ParserException();
+        }
+        
+        HIR ir = new HIR();
+        ir.setIR(action_obj.getAST());
+        
+        success = true;
+        return ir;
+	}
+	
+	public static void main(String[] argv)  throws ParserException{
+        String srcFileName = "E:/CompilerProj/student/lab/lab3/test/exp_list.txt";  // source file name
+        File srcFile = new File(srcFileName);
+        
+        ExprParser parser = new ExprParser();
+        HIR ir = null;
+        try {
+            ir = (HIR)parser.doParse(srcFile);
+        } catch (ParserException e) {
+            System.err.println("ParserException");
+            e.printStackTrace();
+            System.exit(-1);
+        }
+        
+        ASTViewer astviewer = new ASTViewer((ASTNode)ir.getIR(), new GenericPropertyDump());
+        astviewer.show();
+    }
+:}
+
+/* Terminals (tokens returned by the scanner). */
+terminal           SEMICOLON, PLUS, MINUS, MULT, DIV, EQ;
+terminal           LPAREN, RPAREN;
+terminal Integer   INTEGER_LITERAL;
+terminal String	   IDENTIFIER;
+
+/* Non terminals */
+non terminal goal;
+non terminal List sequence,statements;
+non terminal ExpressionStatement statement;
+non terminal Assignment assignment;	
+non terminal Expression expression, term, factor;
+
+/* Precedences */
+precedence left PLUS, MINUS;
+precedence left MULT, DIV;
+precedence left LPAREN;
+
+start with goal;
+
+/* The grammar */
+goal 		::=
+	 sequence:seq
+	{:
+		root = ast.newBlock();
+		((Block)root).statements().addAll(seq);
+	:}
+	;
+sequence ::=
+	{:	RESULT = new LinkedList();
+	:}
+	|	statements:bs
+	{:	RESULT = bs;
+	:}
+	;
+statements ::=
+		statement:as
+	{:	RESULT = new LinkedList();
+		RESULT.add(as);
+	:}
+	|	statements:s statement:as
+	{:	s.add(as);
+		RESULT = s;
+	:}
+	;
+
+statement ::=
+		assignment:as SEMICOLON
+	{:	RESULT = ast.newExpressionStatement(as);
+	:}
+	;
+
+assignment	::=	
+	 IDENTIFIER:id EQ expression:r
+	{:
+		RESULT = ast.newAssignment();
+		RESULT.setLeftHandSide(ast.newSimpleName(id));
+		RESULT.setOperator(Assignment.Operator.ASSIGN);
+		RESULT.setRightHandSide(r);
+	:}
+	;
+	
+expression	::=
+	 term:t
+	{:
+		RESULT = t;
+	:}
+	| expression:e PLUS term:t
+	{:
+		InfixExpression ie = ast.newInfixExpression();
+		ie.setLeftOperand(e);
+		ie.setOperator(InfixExpression.Operator.PLUS);
+		ie.setRightOperand(t);
+		RESULT = ie;
+	:}
+	| expression:e MINUS term:t
+	{:
+		InfixExpression ie = ast.newInfixExpression();
+		ie.setLeftOperand(e);
+		ie.setOperator(InfixExpression.Operator.MINUS);
+		ie.setRightOperand(t);
+		RESULT = ie;
+	:}
+	;
+	
+term		::=	
+	 factor:f
+	{:
+		RESULT = f;
+	:}
+	| term:t MULT factor:f
+	{:
+		InfixExpression ie = ast.newInfixExpression();
+		ie.setLeftOperand(t);
+		ie.setOperator(InfixExpression.Operator.TIMES);
+		ie.setRightOperand(f);
+		RESULT = ie;
+	:}
+	| term:t DIV factor:f
+	{:
+		InfixExpression ie = ast.newInfixExpression();
+		ie.setLeftOperand(t);
+		ie.setOperator(InfixExpression.Operator.DIVIDE);
+		ie.setRightOperand(f);
+		RESULT = ie;
+	:}
+	;
+	
+factor		::=	
+	 IDENTIFIER:id
+	{:
+		RESULT = ast.newSimpleName(id);
+	:} 
+	| INTEGER_LITERAL:n
+	{:
+		RESULT = ast.newNumberLiteral();
+		((NumberLiteral)RESULT).setToken(n.toString());
+	:}
+	| LPAREN expression:e RPAREN 
+	{:
+		ParenthesizedExpression pe = ast.newParenthesizedExpression();
+		pe.setExpression(e);
+		RESULT = pe;
+	:}
+	;

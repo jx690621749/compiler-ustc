@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<configs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="configure.xsd">
+  <boolCfgs>
+    <boolCfg name="debug" value="true"/>
+    <boolCfg name="dispAST" value="true"/>
+    <boolCfg name="doCheck" value="true"/>
+    <boolCfg name="genAsm" value="false"/>
+    <boolCfg name="exec" value="false"/>
+  </boolCfgs>
+  
+  <strCfgs>
+    <strCfg name="srcFile" value="../test/test.mj"/>
+    <strCfg name="parserClass" value="edu.ustc.cs.compile.parser.skipoominijool.Parser"/>
+    <strCfg name="checkerClass" value="edu.ustc.cs.compile.checker.skipoominijool.Checker"/>
+    <strCfg name="dumpClass" value="edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump"/>
+  </strCfgs>
+</configs>

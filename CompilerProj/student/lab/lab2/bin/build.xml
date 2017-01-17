@@ -1,0 +1,45 @@
+<project name="Lab2" default="all" basedir="..">
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="BIN_DIR" location="bin"/>
+    <property name="DOC_DIR" location="doc"/>
+    
+    <property name="CFG_DIR" location="config"/>
+    <property name="LEXER_DIR" value="edu/ustc/cs/compile/lexer"/>
+    <property name="TEST_DIR" location="test"/>
+    <property name="ROOT_DIR" location="../.."/>    
+    <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    
+    <target name="all">
+        <antcall target="lab2-1"/>
+        <antcall target="lab2-2"/>
+        <antcall target="lab2-3"/>
+        <antcall target="lab2-4"/>
+    </target>
+    
+    <target name="clean">
+        <delete dir="classes"/>
+    </target>
+
+    <target name="lab2-1">
+        <ant antfile="${BIN_DIR}/lab2-1.xml" inheritAll="true"/>
+    </target>
+    
+    <target name="lab2-2">
+        <ant antfile="${BIN_DIR}/lab2-2.xml" inheritAll="true"/>
+    </target>
+    
+    <target name="lab2-3">
+        <ant antfile="${BIN_DIR}/lab2-3.xml" inheritAll="true"/>
+    </target>
+    
+    <target name="lab2-4">
+        <ant antfile="${BIN_DIR}/lab2-4.xml" inheritAll="true"/>
+    </target>
+    
+  <target name="doc">
+    <ant antfile="${BIN_DIR}/lab2-3.xml" target="doc" inheritAll="true"/>
+  </target>
+</project>

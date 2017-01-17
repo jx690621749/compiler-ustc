@@ -1,0 +1,14 @@
+class Fab {
+    static void main() {
+        m1 = 1;
+        m2 = 1;
+        n = 10;
+        while (n >= 0) {
+	    m3 = m1+m2;
+	    m1 = m2;
+	    m2 = m3;
+	    print(m3);
+	    n -= 1;
+	}
+    }
+}

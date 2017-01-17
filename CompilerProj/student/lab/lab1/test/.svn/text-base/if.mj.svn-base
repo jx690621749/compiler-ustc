@@ -1,0 +1,29 @@
+class IF {
+    static void Main() {
+        boolean b1, b2, b3;
+        b1 = true;
+        b2 = false;
+        b3 = b1 || b2;
+        b4 = b1 && b2;
+
+        if (b1) {
+            Print("b1: correct");
+        }
+
+        if (b2) {
+            Print("b2: error");
+        } else {
+            Print("b2-else: correct");
+        }
+
+        if (b2) {
+            Print("b2: error");
+        } else if (b4) {
+            Print("b4-elseif: error");
+        } else if (b3) {
+            Print("b3-elseif: correct");
+        } else {
+            Print("if-elseif-els: error");
+        }
+    }
+}

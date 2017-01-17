@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<configs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="configure.xsd">
+  <boolCfgs>
+    <boolCfg name="debug" value="true"/>
+    <boolCfg name="dispAST" value="true"/>
+    <boolCfg name="genAsm" value="false"/>
+    <boolCfg name="exec" value="false"/>
+  </boolCfgs>
+  
+  <strCfgs>
+    <strCfg name="srcFile" value="../test/expr.mj"/>
+    <strCfg name="parserClass" value="edu.ustc.cs.compile.parser.ExpressionParser"/>
+    <strCfg name="dumpClass" value="edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump"/>
+  </strCfgs>
+</configs>

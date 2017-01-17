@@ -1,0 +1,14 @@
+class Program{
+	static void main(){
+		a1 = 45;
+		print(a1);
+		
+		read(a2);
+		print(a2);
+		
+		read(a3);
+		print(a3);
+		
+	}
+
+}

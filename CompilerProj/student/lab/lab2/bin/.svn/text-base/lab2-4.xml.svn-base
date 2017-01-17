@@ -1,0 +1,60 @@
+<project name="lab2-3" default="all">
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB"
+              value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                     ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                     
+    <property name="JAVACUP_DIR" location="${TOOL_DIR}/java-cup"/>
+    <property name="JAVACUP_RUNTIME_LIB" value="${JAVACUP_DIR}/java-cup-11a-runtime.jar"/>
+    
+    <property name="MLEX_FILE" value="${CFG_DIR}/MLex/MiniJOOL.mlex"/>
+    <property name="LEXER_FILE" value="${SRC_DIR}/${LEXER_DIR}/LexerCode.java"/>
+    
+    <property name="CLASSPATH" 
+              value="${DEST_DIR}/${LEXER_DIR}:
+                     ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar:
+                     ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                     ${AST_LIB}:${JAVACUP_RUNTIME_LIB}:
+                     ${LIB_DIR}/edu.ustc.cs.compile.parser.mlexspec.jar"/>
+                     
+    <target name="all">
+        <antcall target="prebuild"/>
+        <antcall target="lex"/>
+        <antcall target="build"/>
+        <antcall target="run"/>
+    </target>
+    
+    <target name="prebuild">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${LEXER_DIR}/LexerCodeGenerator.java"/>               
+    </target>
+    
+    <target name="lex">
+        <java classname="edu.ustc.cs.compile.lexer.LexerCodeGenerator"
+              classpath="${CLASSPATH}:${DEST_DIR}">
+            <arg value="${MLEX_FILE}"/>
+            <arg value="${LEXER_FILE}"/>
+        </java>
+    </target>
+    
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${LEXER_DIR}/Main.java,
+                         ${LEXER_DIR}/NFAState.java,
+                         ${LEXER_DIR}/NFASimulator.java,
+                         ${LEXER_DIR}/LexerCode.java"/>
+    </target>
+    
+    <target name="run">
+        <java classname="edu.ustc.cs.compile.lexer.Main"
+              classpath="${CLASSPATH}:${DEST_DIR}">
+            <arg value="4"/>
+        </java>
+    </target>
+</project>

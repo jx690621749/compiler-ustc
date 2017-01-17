@@ -1,0 +1,172 @@
+/**
+ * 这个文件提供了一个解释器的框架代码。你需要补全这些代码，完成一个能够
+ * 正确工作的SimpleMiniJOOL程序解释器。
+ */
+package edu.ustc.cs.compile.interpreter;
+
+import org.eclipse.jdt.core.dom.*;
+import edu.ustc.cs.compile.platform.interfaces.InterpreterInterface;
+import edu.ustc.cs.compile.platform.interfaces.InterpreterException;
+import edu.ustc.cs.compile.platform.interfaces.InterRepresent;
+
+/**
+ * <p>解释器类。</p>
+ * <p>它是实验平台提供的解释器接口InterpreterInterface的一个实现，用于从实验平台获取表示
+ * SimpleMiniJOOL程序的中间表示，然后调用解释器的代码解释执行这个程序。在我们提供的框架代
+ * 码中，实际解释SimpleMiniJOOL程序的代码封装在类InterpVisitor中。</p>
+ */
+public class Interpreter implements InterpreterInterface {
+    /**
+     * 在接口InterpreterInterface中要求实现的方法。用于从实验平台获取表示SimpleMiniJOOL
+     * 程序的中间表示，调用解释器代码解释执行这个程序。
+     * @param ir 需要执行的SimpleMiniJOOL程序的中间表示
+     * @throws InterpreterException 抛出这个异常可以通知实验平台解释器发生错误，
+     *                              实验平台捕获这个异常后会终止执行。
+     */
+    public void interpret(InterRepresent ir) throws InterpreterException {
+        InterpVisitor visitor = new InterpVisitor();
+        try {
+            ((CompilationUnit)ir.getIR()).accept(visitor);  // 调用实际解释SimpleMiniJOOL程序的代码
+        } catch (IllegalArgumentException e) {
+            // TODO: 添加你自己的异常处理代码
+            e.printStackTrace();
+            throw new InterpreterException();
+        } 
+    }
+}
+
+/**
+ * 封装实际解释执行SimpleMiniJOOL程序的代码。实际是ASTVisitor的
+ * 一个子类，通过遍历AST完成解释器的功能。以下只是一个代码框架，
+ * 你需要自行补全。
+ */
+class InterpVisitor extends ASTVisitor {
+    public boolean visit(CompilationUnit n) {
+        // TODO: 添加代码解释CompilationUnit
+        return true;
+    }
+
+    public boolean visit(TypeDeclaration n) {
+        // TODO: 添加代码解释TypeDeclaration
+        return true;
+    }
+
+    public boolean visit(MethodDeclaration n) {
+        // TODO: 添加代码解释MethodDeclaration
+        return true;
+    }
+
+    public boolean visit(Block n) {
+        // TODO: 添加代码解释Block
+        return true;
+    }
+
+    public boolean visit(EmptyStatement n) {
+        // TODO: 添加代码解释EmptyStatement
+        return true;
+    }
+
+    public boolean visit(IfStatement n) {
+        // TODO: 添加代码解释IfStatement
+        return true;
+    }
+
+    public boolean visit(WhileStatement n) {
+        // TODO: 添加代码解释WhileStatement
+        return true;
+    }
+
+    public boolean visit(ExpressionStatement n) {
+        // TODO: 添加代码解释ExpressionStatement
+        return true;
+    }
+
+    public boolean visit(Assignment n) {
+        // TODO: 添加代码解释Assignment。你可以参考以下代码框架。
+        
+        Assignment.Operator operator = n.getOperator();
+        // NOTE: 你需要考虑操作数是print()的情况。此时，你可以考
+        //       虑抛出异常VoidReferenceException。
+        if (operator == Assignment.Operator.ASSIGN) {
+            
+        } else if (operator == Assignment.Operator.PLUS_ASSIGN) {
+        
+        } else if (operator == Assignment.Operator.MINUS_ASSIGN) {
+        
+        } else if (operator == Assignment.Operator.TIMES_ASSIGN) {
+        
+        } else if (operator == Assignment.Operator.DIVIDE_ASSIGN) {
+            // NOTE: 你需要考虑除数为0的情况。此时，你可以考虑抛出
+            //       异常DividedByZeroException。
+        } else if (operator == Assignment.Operator.REMAINDER_ASSIGN) {
+            // NOTE: 你需要考虑除数为0的情况。此时，你可以考虑抛出
+            //       异常DividedByZeroException。
+        } // 继续...
+        return true;
+    }
+
+    public boolean visit(MethodInvocation n) {
+        // TODO: 添加代码解释MethodInvocation
+        return true;
+    }
+
+    public boolean visit(NumberLiteral n) {
+        // TODO: 添加代码解释NumberLiteral
+        return true;
+    }
+
+    public boolean visit(PrefixExpression n) {
+        // TODO: 添加代码解释PostfixExpression。你可以参考以下代码框架。
+        
+        PrefixExpression.Operator operator = n.getOperator();
+        // NOTE: 你需要考虑操作数是print()的情况。此时，你可以考
+        //       虑抛出异常VoidReferenceException。
+        if (operator == PrefixExpression.Operator.PLUS) {
+        
+        } else if (operator == PrefixExpression.Operator.MINUS) {
+        
+        } else if (operator == PrefixExpression.Operator.NOT) {
+        
+        } // 继续...
+        return true;
+    }
+
+    public boolean visit(InfixExpression n) {
+        // TODO: 添加代码解释InfixExpression。你可以参考以下代码框架。
+        
+        InfixExpression.Operator operator = n.getOperator();
+        // NOTE: 你需要考虑操作数是print()的情况。此时，你可以考
+        //       虑抛出异常VoidReferenceException。
+        if (operator == InfixExpression.Operator.AND) {
+        
+        } else if (operator == InfixExpression.Operator.MINUS) {
+        
+        } else if (operator == InfixExpression.Operator.TIMES) {
+        
+        } else if (operator == InfixExpression.Operator.DIVIDE) {
+            // NOTE: 你需要考虑除数为0的情况。此时，你可以考虑抛出
+            //       异常DividedByZeroException。
+        } else if (operator == InfixExpression.Operator.REMAINDER) {
+            // NOTE: 你需要考虑除数为0的情况。此时，你可以考虑抛出
+            //       异常DividedByZeroException。
+        } // 继续....
+        return true;
+    }
+
+    public boolean visit(SimpleName n) {
+        // TODO: 添加代码解释SimpleName
+        return true;
+    }
+
+    public boolean visit(PrimitiveType n) {
+        // TODO: 添加代码解释PrimitiveType
+        return true;
+    }
+
+    public boolean visit(Modifier n) {
+        // TODO: 添加代码解释Modifier
+        return true;
+    }
+
+    // TODO: 添加代码解释其它需要解释的AST节点
+}

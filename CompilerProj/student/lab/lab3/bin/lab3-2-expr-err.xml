@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="lab3-2" default="build" basedir="..">
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="CFG_DIR" location="config"/>
+    <property name="BIN_DIR" location="bin"/>
+    
+    <property name="ROOT_DIR" location="../.."/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    
+    <property name="PARSER_DIR" value="edu/ustc/cs/compile/parser/expr"/>
+    <property name="PARSER_PACKAGE" value="edu.ustc.cs.compile.parser.expr"/>
+    <property name="SYM_CLASS" value="ExprESymbol"/>
+    <property name="PARSER_CLASS" value="ExprEParser"/>
+    <property name="LEXER_CLASS" value="ExprELexer"/>
+    
+    <property name="JFLEX_DIR" location="${TOOL_DIR}/jflex"/>
+    <property name="JFLEX" value="${JFLEX_DIR}/JFlex.jar"/>    
+    
+    <property name="JAVACUP_DIR" location="${TOOL_DIR}/java-cup"/>
+    <property name="JAVACUP" value="${JAVACUP_DIR}/java-cup-11a.jar"/>
+    <property name="JAVACUP_RUNTIME_LIB" value="${JAVACUP_DIR}/java-cup-11a-runtime.jar"/>
+    
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB" value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                                    
+    <property name="PLATFORM_LIB" value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                                         ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+    
+    <property name="CLASSPATH" value="${JAVACUP_RUNTIME_LIB}:${AST_LIB}:${PLATFORM_LIB}"/>
+    
+    <target name="jflex" description="生成词法分析器">
+        <mkdir dir="${SRC_DIR}/${PARSER_DIR}"/>
+        <java fork="yes" jar="${JFLEX}">
+            <arg value="-v"/>
+            <arg value="-d"/>
+            <arg value="${SRC_DIR}/${PARSER_DIR}"/>
+            <arg value="${CFG_DIR}/JFlex/expr_err.flex"/>
+        </java>
+    </target>
+    
+    <target name="java-cup" depends="jflex" description="生成语法分析器">
+        <java fork="yes" jar="${JAVACUP}">
+            <arg value="-package"/>
+            <arg value="${PARSER_PACKAGE}"/>
+            <arg value="-parser"/>
+            <arg value="${PARSER_CLASS}"/>
+            <arg value="-symbols"/>
+            <arg value="${SYM_CLASS}"/>
+            <arg value="-progress"/>
+            <arg value="${CFG_DIR}/CUP/expr_err.cup"/>
+        </java>
+        <move file="${PARSER_CLASS}.java" todir="${SRC_DIR}/${PARSER_DIR}"/>
+        <move file="${SYM_CLASS}.java" todir="${SRC_DIR}/${PARSER_DIR}"/>
+    </target>
+    
+    <target name="config" depends="java-cup" description="配置语法分析器">
+        <echo>
+You have to replace following code in ${SRC_DIR}/${PARSER_DIR}/${PARSER_CLASS}.java by yourself
+ public class ${PARSER_CLASS} extends java_cup.runtime.lr_parser
+with
+ public class ${PARSER_CLASS} extends java_cup.runtime.lr_parser implements ParserInterface        
+        </echo>
+    </target>
+    
+    <target name="build" description="编译语法分析器">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               srcdir="${SRC_DIR}" destdir="${DEST_DIR}"
+               includes="${PARSER_DIR}/${LEXER_CLASS}.java,
+                         ${PARSER_DIR}/${PARSER_CLASS}.java,
+                         ${PARSER_DIR}/${SYM_CLASS}.java"/>        
+    </target>
+</project>

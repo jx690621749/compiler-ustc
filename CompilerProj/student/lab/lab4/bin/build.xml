@@ -1,0 +1,33 @@
+<project name="lab4" default="build" basedir="..">
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="DEST_DIR" location="classes"/>
+    
+    <property name="ROOT_DIR" location="../.."/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    
+    <property name="TOOL_DIR" location="${ROOT_DIR}/tools"/>
+    <property name="TOOL_LIB" value="${TOOL_DIR}/jflex/jflex.jar:
+                        ${TOOL_DIR}/java-cup/java-cup-11a-runtime.jar:
+                        ${TOOL_DIR}/javacc/javacc.jar"/>
+    
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    <property name="PLATFORM_LIB" value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                                         ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+                                         
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB" value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+
+    <property name="CLASSPATH" value="${PLATFORM_LIB}:${AST_LIB}"/>
+
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"/>
+    </target>
+    <target name="clean">
+        <delete dir="${DEST_DIR}"/>
+    </target>
+</project>

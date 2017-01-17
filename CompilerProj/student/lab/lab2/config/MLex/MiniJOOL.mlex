@@ -1,0 +1,73 @@
+class Lexer {
+	static void main() {
+		ws = ' ' | '\n' | '\r' | '\r' | '\t';
+		digit = '0' - '9';
+		alpha = 'a' - 'z' | 'A' - 'Z';
+		id = (alpha) + (digit | alpha) * 0;
+		character = ' ' | '!' | '#' - '[' | ']' - '~';
+		escape = '\\' + ('\'' | '"' | '\\' | 'n' | ' ');
+		string = '"' + (character | escape) * 0 + '"';
+		printable = ' ' - '~';
+		comment = "//" + printable * 0;
+		
+		if ("static")	{ return STATIC; }
+		if ("int")		{ return INT; }
+		if ("boolean")	{ return BOOLEAN; }
+		if ("String")	{ return STRING;}
+		if ("void")		{ return VOID; }
+		if ("class")	{ return CLASS; }
+		if ("extends")	{ return EXTENDS; }
+		if ("new")		{ return NEW; }
+		if ("this")		{ return THIS; }
+		if ("super")	{ return SUPER; }
+		if ("instanceof")		{ return INSTANCEOF; }
+		if ("if")		{ return IF; }
+		if ("else")		{ return ELSE; }
+		if ("while")	{ return WHILE; }
+		if ("return")	{ return RETURN; }
+		if ("null")		{ return NULL; }
+		if ("print")	{ return PRINT; }
+		if ("read")	    { return READ; }
+		if ("true")		{ return BOOLEAN_LITERAL; }
+		if ("false")	{ return BOOLEAN_LITERAL; }
+
+		if (id)			{ return IDENTIFIER; }
+		
+		if (digit * 1)	{ return INTEGER_LITERAL; }
+		if (string)		{ return STRING_LITERAL; }
+		
+		if ('}')		{ return RBRACE; }
+		if ('{')		{ return LBRACE; }
+		if (']')		{ return RBRACK; }
+		if ('[')		{ return LBRACK; }
+		if (')')		{ return RPAREN; }
+		if ('(')		{ return LPAREN; }
+		if (',')		{ return COMMA; }
+		if (';')		{ return SEMICOLON; }
+		if ('.')		{ return PERIOD; }
+		if ('+')		{ return PLUS; }
+		if ('-')		{ return MINUS; }
+		if ("*")		{ return MULT; }
+		if ("/")		{ return DIV; }
+		if ("%")		{ return MOD; }
+		if ('=')		{ return EQ; }
+		if ('!')		{ return NOT; }
+		if ("&&")		{ return ANDAND; }
+		if ("||")		{ return OROR; }
+		if (">")		{ return GT; }
+		if ("<")		{ return LT; }
+		if ("==")		{ return EQEQ; }
+		if ("!=")		{ return NOTEQ; }
+		if ("<=")		{ return LTEQ; }
+		if (">=")		{ return GTEQ; }
+		if ("+=")		{ return PLUSEQ; }
+		if ("-=")		{ return MINUSEQ; }
+		if ("*=")		{ return MULTEQ; }
+		if ("/=")		{ return DIVEQ; }
+		if ("%=")		{ return MODEQ; }
+		
+		if ('\n')		{ return IGNORE; }
+		if (comment)	{ return IGNORE; }
+		if (ws)			{ return IGNORE; }
+    }
+}

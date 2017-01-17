@@ -1,0 +1,29 @@
+<project name="lab3-1" default="build" basedir="..">
+    <property name="SRC_DIR" location="src"/>
+    <property name="DEST_DIR" location="classes"/>
+    <property name="PARSER_DIR" value="edu/ustc/cs/compile/parser/expr"/>
+    
+    <property name="ROOT_DIR" location="../.."/>
+    <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
+    
+    <property name="AST_DIR" location="${LIB_DIR}/AST/3.1.2"/>
+    <property name="AST_LIB" value="${AST_DIR}/org.eclipse.core.resources_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.core.runtime_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.core_3.1.2.jar:
+                                    ${AST_DIR}/org.eclipse.jdt.ui_3.1.2.jar"/>
+                                    
+    <property name="PLATFORM_DIR" location="${ROOT_DIR}/platform/lib"/>
+    <property name="PLATFORM_LIB" value="${PLATFORM_DIR}/edu.ustc.cs.compile.platform.interfaces.jar:
+                                         ${PLATFORM_DIR}/edu.ustc.cs.compile.platform.util.jar"/>
+                                             
+    <property name="LAB2_DIR" location="${ROOT_DIR}/lab/lab2/classes"/>
+    
+    <property name="CLASSPATH" value="${AST_LIB}:${PLATFORM_LIB}:${LAB2_DIR}"/>
+    
+    <target name="build">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" classpath="${CLASSPATH}"
+               destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${PARSER_DIR}/Main.java,$(PARSER_DIR}/RDParser.java,${PARSER_DIR}/ExpressionParser.java"/>
+    </target>
+</project>

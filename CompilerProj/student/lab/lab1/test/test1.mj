@@ -1,0 +1,23 @@
+class IF{
+	static void main(){
+		b1 = 3;
+        b2 = 1;
+        print(b1);
+        print(b2);
+        
+        b3 = b1 && b2;
+        b4 = b1 || b2;
+        print(b3);
+        print(b4);
+        
+        b5 = -b1;
+        b6 = b5 + 4;
+        print(b5);
+        print(b6);
+        
+        print(0);
+        
+        //return;
+        
+	}
+}

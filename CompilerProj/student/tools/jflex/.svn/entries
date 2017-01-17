@@ -1,0 +1,41 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/tools/jflex
+svn://192.168.1.254
+
+
+
+2008-04-06T23:07:06.025509Z
+123
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+JFlex.jar
+file
+
+
+
+
+2008-04-08T02:23:44.000000Z
+13ff2b6264c7fcb76121995d82849889
+2008-04-06T23:07:06.025509Z
+123
+compiler
+has-props
+

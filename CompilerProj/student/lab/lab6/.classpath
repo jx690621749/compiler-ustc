@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry output="classes" kind="src" path="src"/>
+	<classpathentry sourcepath="JRE_SRC" kind="var" path="JRE_LIB"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.interfaces.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.util.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/edu.ustc.cs.compile.arch.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/tools/java-cup/java-cup-11a-runtime.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/edu.ustc.cs.compile.parser.skipoominijool.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/AST/3.1.2/org.eclipse.core.resources_3.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/AST/3.1.2/org.eclipse.core.runtime_3.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/AST/3.1.2/org.eclipse.jdt.core_3.1.2.jar"/>
+	<classpathentry kind="lib" path="E:/CompilerProj/student/lib/AST/3.1.2/org.eclipse.jdt.ui_3.1.2.jar"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

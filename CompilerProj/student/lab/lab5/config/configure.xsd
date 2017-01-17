@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="configs" type="Config"/>
+
+<xs:complexType name="Config">
+  <xs:sequence>
+    <xs:element ref="boolCfgs" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="strCfgs" minOccurs="0" maxOccurs="1"/>
+    <xs:element ref="archCfgs" minOccurs="0" maxOccurs="1"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="boolCfgs">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="boolCfg" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="boolCfg">
+  <xs:complexType>
+    <xs:attribute name="name" type="BoolCfgName" use="required"/>
+    <xs:attribute name="value" type="xs:boolean" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="BoolCfgName">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="debug"/>
+    <xs:enumeration value="dispAST"/>
+    <xs:enumeration value="dispOptAST"/>
+    <xs:enumeration value="doInterp"/>
+    <xs:enumeration value="doCheck"/>
+    <xs:enumeration value="genAsm"/>
+    <xs:enumeration value="doOpt"/>
+    <xs:enumeration value="exec"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:element name="strCfgs">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="strCfg" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="strCfg">
+  <xs:complexType>
+    <xs:attribute name="name" type="StrCfgName" use="required"/>
+    <xs:attribute name="value" type="xs:string" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="StrCfgName">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="srcFile"/>
+    <xs:enumeration value="asmFile"/>
+    <xs:enumeration value="exeFile"/>
+    <xs:enumeration value="parserClass"/>
+    <xs:enumeration value="checkerClass"/>
+    <xs:enumeration value="interpClass"/>
+    <xs:enumeration value="optClass"/>
+    <xs:enumeration value="genClass"/>
+    <xs:enumeration value="dumpClass"/>
+    <xs:enumeration value="spimPath"/>
+    <xs:enumeration value="gccPath"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:element name="archCfgs">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="arch"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="arch">
+  <xs:complexType>
+    <xs:attribute name="value" type="archValue" use="required"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:simpleType name="archValue">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="x86"/>
+    <xs:enumeration value="mips"/>
+  </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

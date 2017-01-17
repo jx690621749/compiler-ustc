@@ -1,0 +1,34 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/platform
+svn://192.168.1.254
+
+
+
+2008-04-09T00:20:29.031046Z
+169
+compiler
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+config
+dir
+
+lib
+dir
+

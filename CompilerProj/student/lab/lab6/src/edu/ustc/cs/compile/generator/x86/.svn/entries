@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab6/src/edu/ustc/cs/compile/generator/x86
+svn://192.168.1.254
+
+
+
+2008-04-12T18:15:50.073211Z
+209
+yzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+Generator1.java
+file
+
+
+
+
+2008-04-12T02:50:58.000000Z
+dab185e357de83e6c80307a22e242412
+2008-04-12T18:15:50.073211Z
+209
+yzhang
+
+Generator2.java
+file
+
+
+
+
+2008-04-12T02:50:58.000000Z
+822663efb79c959623fd2fae4d62fe96
+2008-04-12T18:15:50.073211Z
+209
+yzhang
+

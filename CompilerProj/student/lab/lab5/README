@@ -1,0 +1,39 @@
+课程设计5说明
+
+1. 目录bin中包含以下文件：
+   build.xml    管理lab5的ant编译文件。默认目标编译src下所有文件。
+   run.bat      DOS批处理文件。不加任何参数运行时，会调用实验平台，并将config目录下的
+                lab5-1.xml作为实验平台的配置文件。带参数-h运行时，会输出实验平台
+                的帮助信息。
+   run.sh       shell脚本文件。功能同run.bat。
+   
+2. 目录config中包含以下文件：
+   lab5-1.xml    在实验平台上运行lab5-1所需的配置文件。
+   lab5-2.xml    在实验平台上运行lab5-2所需的配置文件。
+   configure.xsd 实验平台配置文件的Schema定义。请不要修改该文件。
+   
+3. 在目录src/edu/ustc/cs/compile/generator/mips中包含以下文件：
+   Generator1.java  lab5-1中的MIPS汇编代码生成器的框架代码。调用我们提供的工具进行寄存
+                    器分配。
+   Generator2.java  lab5-2中的MIPS汇编代码生成器的框架代码。自行处理寄存器分配。
+   
+4. 目录test下提供一些测试文件，用于测试你的程序能否正常工作。你可以在这里添加更多的
+   测试文件。
+   
+5. lab5-1的参考流程：
+   1）补全文件Generator1.java。
+   2）在目录bin下执行ant编译lab5-1
+          ant build
+   3）在目录bin下调用实验平台运行汇编代码生成器
+          ./run.sh -cf ../config/lab5-1.xml
+        或
+          run -cf ..\config\lab5-1.xml
+          
+6. lab5-2的参考流程：
+   1）补全文件Generator2.java。
+   2）在目录bin下执行ant编译lab5-2
+          ant build
+   3）在目录bin下调用实验平台运行汇编代码生成器
+          ./run.sh -cf ../config/lab5-2.xml
+        或
+          run -cf ..\config\lab5-2.xml

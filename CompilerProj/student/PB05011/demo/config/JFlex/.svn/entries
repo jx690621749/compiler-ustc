@@ -1,0 +1,40 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/PB05011/demo/config/JFlex
+svn://192.168.1.254
+
+
+
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+demo.flex
+file
+
+
+
+
+2008-04-12T02:51:00.000000Z
+d41d8cd98f00b204e9800998ecf8427e
+2008-04-12T18:28:39.003849Z
+212
+yzhang
+

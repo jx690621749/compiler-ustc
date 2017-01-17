@@ -1,0 +1,34 @@
+<project name="lab2-1" default="all" basedir="..">
+    <property name="JFLEX_DIR" location="${TOOL_DIR}/jflex"/>
+    <property name="JFLEX" value="${JFLEX_DIR}/JFlex.jar"/>
+    <property name="JFLEX_CFG" value="${CFG_DIR}/JFlex/sample.flex"/>
+    <property name="CLASSPATH" value="${DEST_DIR}"/>
+    
+    <target name="all">
+        <antcall target="jflex"/>
+        <antcall target="build"/>
+        <antcall target="run"/>
+    </target>
+    
+    <target name="jflex" description="生成词法分析器">
+        <java fork="yes" jar="${JFLEX}">
+            <arg value="-v"/>
+            <arg value="-d"/>
+            <arg value="${SRC_DIR}/${LEXER_DIR}"/>
+            <arg value="${JFLEX_CFG}"/>
+        </java>
+    </target>
+    
+    <target name="build" description="编译">
+        <mkdir dir="${DEST_DIR}"/>
+        <javac debug="on" destdir="${DEST_DIR}" srcdir="${SRC_DIR}"
+               includes="${LEXER_DIR}/Symbol.java, ${LEXER_DIR}/SampleLexer.java"/>
+    </target>
+    
+    <target name="run" description="运行示例分析器">
+        <java classpath="${CLASSPATH}" 
+              classname="edu.ustc.cs.compile.lexer.SampleLexer">
+            <arg value="${TEST_DIR}/expr.txt"/>
+        </java>
+    </target>
+</project>

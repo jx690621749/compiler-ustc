@@ -1,0 +1,58 @@
+课程设计1说明
+
+1. 目录src/edu/ustc/cs/compile/interpreter中包含以下代码文件：
+   Interpreter.java    解释器的框架代码，你需要补全其中的代码
+   TestCase.java       手工构造AST的框架代码，你需要补全其中的代码
+   DividedByZeroException.java    定义异常DividedByZeroException
+   VoidReferenceException.java    定义异常VoidReferenceException
+   Main.java           调试课程设计1的主类
+   
+2. 目录bin中包含以下文件：
+   build.xml  管理lab1的ant配置文件，默认编译src下的所有文件
+   run.bat    DOS批处理文件。不加任何参数运行时，会调用实验平台，并将config目录下的
+              lab1-parser.xml作为实验平台的配置文件。带参数-h运行时，会输出实验平台
+              的帮助信息。
+   run.sh     shell脚本文件。功能同run.bat。
+   
+3. 目录config中包含以下文件：
+   lab1-parser.xml    实验平台配置文件。调用我们提供的语法分析器生成AST，然后调用你的
+                      解释器。
+   lab1-testcase.xml  实验平台配置文件。功能同上，但是调用TestCase获得AST。
+   configure.xsd      实验平台配置文件的Schema定义。请不要修改该文件。
+
+4. 目录test下提供一些测试文件，用于测试你的程序能否正常工作。你可以在这里添加更多的
+   测试文件。
+   
+5. 课程设计1的参考流程
+   1）补全所有代码
+   2）在bin目录下用ant编译所有代码:
+            ant
+      或    ant build
+      要想从源程序中提取注释生成HTML文档，你可以执行
+            ant doc
+   3) 根据你的代码结构及测试方式，修改config下的lab1-parser.xml配置文件。主要是修改
+            <strCfg name="srcFile" value="../test/syntax.mj"/>
+      设置测试文件。你如果没有修改框架代码中的类名或者不使用配置文件运行实验平台，基本
+      上不用做更多的修改。
+   4）根据你的代码结构修改bin下的批处理文件或shell脚本文件。你如果没有改变框架代码中
+      类的名称，也没有其它第三方类（除了我们提供的），基本上可以跳过这一步。
+   5）在bin目录下执行批处理文件或者shell脚本文件，运行你的解释器。
+            ./run.sh -cf ../config/lab1-parser.xml
+            ./run.sh -cf ../config/lab1-testcase.xml
+      或
+            run -cf ..\config\lab1-parser.xml
+            run -cf ..\config\lab1-testcase.xml
+      你如果不打算使用配置文件，可以使用如下的命令：
+            ./run.sh -P edu.ustc.cs.compile.parser.simpleminijool.Parser \
+                     -I edu.ustc.cs.compile.interpreter.Interpreter \
+                     -D edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump \
+                     测试文件
+            ./run.sh -P edu.ustc.cs.compile.interpreter.TestCase \
+                     -I edu.ustc.cs.compile.interpreter.Interpreter \
+                     -D edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump \
+                     测试文件
+      或
+           run -P edu.ustc.cs.compile.parser.simpleminijool.Parser -I edu.ustc.cs.compile.interpreter.Interpreter -D edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump 测试文件
+           run -P edu.ustc.cs.compile.interpreter.TestCase -I edu.ustc.cs.compile.interpreter.Interpreter -D edu.ustc.cs.compile.platform.util.ASTView.plugin.GenericPropertyDump 测试文件
+
+           

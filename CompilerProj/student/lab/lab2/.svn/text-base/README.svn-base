@@ -1,0 +1,46 @@
+课程设计2说明
+
+1. 目录bin下包含以下文件：
+    build.xml   管理lab2的ant编译文件，缺省执行的任务组是all。all任务组分别用lab2-1.xml、
+                lab2-2.xml、lab2-3.xml、lab2-4.xml四个编译文件来运行ant，从而编译并运行
+                4个课程设计。
+                此外，编译文件中还包括四个任务组lab2-1、lab2-2、lab2-3、lab2-4，分别调用
+                相应的编译文件来编译并运行各个课程设计。
+    lab2-1.xml  配合build.xml管理lab2-1的ant编译文件。
+    lab2-2.xml  配合build.xml管理lab2-2的ant编译文件。
+    lab2-3.xml  配合build.xml管理lab2-3的ant编译文件。
+    lab2-4.xml  配合build.xml管理lab2-4的ant编译文件。
+    
+2. 目录config下包含以下文件：
+   JFlex/sample.flex    lab2-1中使用的JFlex词法规范文件。
+   MLex/MiniJOOL.mlex   lab2-3、lab2-4中使用Mlex词法规范文件。
+
+3. 目录src/edu/ustc/cs/compile/lexer下包含以下文件：
+   ExpressionLexer.java     lab2-2中词法分析器的框架代码，派生自Lexer
+   Lexer.java               词法分析器的抽象基类
+   LexerCodeGenerator.java  lab2-4中词法分析器生成器的框架代码
+   Main.java                执行lab2-2~lab2-4。其中有runPart2()、runPart3()、runPart4()
+                            3个方法。默认情况下，这3个方法的内容是被注释掉的。你可以取消
+                            注释以运行相应的课程设计。 
+   NFAGenerator.java        lab2-3中生成NFA的框架代码。
+   NFASimulator.java        lab2-3和lab2-4中运行NFA的模拟器。
+   NFAState.java            lab2-3和lab2-4中使用的NFA状态类。
+   Symbol.java              lab2-1～lab2-4中使用的词法记号类。
+   UnmatchedException.java  lab2-2中使用的异常类
+   LexerCode.java.sample    lab2-4中词法分析器生成器生成的文件的示例。
+   
+4. 目录test下提供一些测试文件，用于测试你的程序能否正常工作。你可以在这里添加更多的
+   测试文件。
+   
+5. 课程设计2的参考流程
+   1）补全所有代码。
+   2）取消Main.java中runPart2()、runPart3()、runPart4()中的注释。
+   3）在bin目录下编译并执行现有代码
+           ant
+   如果只编译运行lab2-1，则跳过2），在bin目录下编译执行lab2-1的代码
+           ant lab2-1
+   如果编译运行lab2-2～lab2-4中的某个或某几个，则跳过2），在Main.java中取消相应方法的注
+   释，在bin目录下编译执行
+           ant lab2-2
+   或      ant lab2-3
+   或      ant lab2-4
