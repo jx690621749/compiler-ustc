@@ -18,7 +18,7 @@ public class Main {
      */
     
     //minijool源语言测试例子所在的文件
-    public final static String file = "e:/CompilerProj/student/lab/lab2/test/test.mj";/*这里要换成你所需要分析的文件*/
+    public final static String file = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab2/test/test.mj";/*这里要换成你所需要分析的文件*/
     
     
     public static void main(String args[]) {
@@ -33,7 +33,7 @@ public class Main {
     }
     
     public static void runPart2() {
-        ExpressionLexer l = new ExpressionLexer("e:/CompilerProj/student/lab/lab2/test/expr.txt");
+        ExpressionLexer l = new ExpressionLexer("/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab2/test/expr.txt");
         Symbol s = l.nextToken();
         while (s.getType() != Symbol.EOF) {
             System.out.println(s);
@@ -44,7 +44,7 @@ public class Main {
    
     public static void runPart3() {
     	Parser parser = new Parser();
-        File in = new File("E:/CompilerProj/student/lab/lab2/config/MLex/MiniJOOL.mlex"); //这里要换成你所需要分析的文件
+        File in = new File("/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab2/config/MLex/MiniJOOL.mlex"); //这里要换成你所需要分析的文件
         
         HIR ir = null;
         try {

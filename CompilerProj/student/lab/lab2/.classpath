@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.interfaces.jar"/>
 	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.util.jar"/>
 	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lib/edu.ustc.cs.compile.parser.mlexspec.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/tools/java-cup/java-cup-11a-runtime.jar"/>
 	<classpathentry kind="output" path="classes"/>
 </classpath>
