@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="classes" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lib/AST/3.1.2/org.eclipse.core.resources_3.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lib/AST/3.1.2/org.eclipse.core.runtime_3.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lib/AST/3.1.2/org.eclipse.jdt.core_3.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lib/AST/3.1.2/org.eclipse.jdt.ui_3.1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.core.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.interfaces.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/platform/lib/edu.ustc.cs.compile.platform.util.jar"/>
+	<classpathentry kind="lib" path="/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/tools/java-cup/java-cup-11a-runtime.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/Lab2-Lexer"/>
+	<classpathentry kind="output" path="classes"/>
+</classpath>

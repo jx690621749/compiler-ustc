@@ -29,7 +29,7 @@ public class Main {
 	 * 运行课程设计3-1
 	 */
     public static void runPart1() {
-        String srcFileName = "E:/CompilerProj/student/lab/lab3/test/exp_list.txt"; // 你需要将srcFileName置为需要解析的文件
+        String srcFileName = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab3/test/exp_list.txt"; // 你需要将srcFileName置为需要解析的文件
         File srcFile = new File(srcFileName);
         ExpressionLexer lexer = new ExpressionLexer(srcFile.getAbsolutePath());
         ExpressionParser parser = new ExpressionParser(lexer);
@@ -57,7 +57,7 @@ public class Main {
 	public static void runPart2() {
 		boolean viewAST = true;
 		
-        String srcFileName = "E:/CompilerProj/student/lab/lab3/test/exp_list.txt"; // 你需要将srcFileName置为需要解析的文件
+        String srcFileName = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab3/test/exp_list.txt"; // 你需要将srcFileName置为需要解析的文件
         File srcFile = new File(srcFileName);
 		ASTNode block;
 		ExprParser parser = new ExprParser();
