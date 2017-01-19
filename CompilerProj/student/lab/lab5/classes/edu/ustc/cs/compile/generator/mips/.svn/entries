@@ -1,0 +1,52 @@
+8
+
+dir
+215
+svn://192.168.1.254/ComplierProj/student/lab/lab5/src/edu/ustc/cs/compile/generator/mips
+svn://192.168.1.254
+
+
+
+2008-04-12T18:15:15.580958Z
+199
+yzhang
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+348eda76-bda5-4638-affe-30809c9ccf7a
+
+Generator1.java
+file
+
+
+
+
+2008-04-12T02:50:58.000000Z
+bbf2c35842c90ff7280904e88470e3e4
+2008-04-12T18:15:15.580958Z
+199
+yzhang
+
+Generator2.java
+file
+
+
+
+
+2008-04-12T02:50:58.000000Z
+5127ac3df872a3584d8fadc5244135c8
+2008-04-12T18:15:15.580958Z
+199
+yzhang
+
