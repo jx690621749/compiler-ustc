@@ -1,7 +1,7 @@
 package edu.ustc.cs.compile.parser.expr;
 
 import java.util.Stack;
-
+import java.util.List;
 import java_cup.runtime.*;
 
 %%
@@ -154,11 +154,11 @@ IntegerLiteral = [:digit:]+
                                   * a (, return a pseudo ) and push the ; back into the input stream.
                                   */
                                  if (!lparenStack.empty()) {
-                                    LParen lparen = parenStack.pop();
+                                    LParen lparen = lparenStack.pop();
                                     addError(ExprError.UnmatchedParenErr,
                                              "Unmatched (. Expect ) somewhere after.", yyline+1, yycolumn+1);
                                     yypushback(1);                                    
-                                    return symbol(ExprESymbol.PSEUDO_RPAREN);
+                                    return symbol(ExprESymbol.RPAREN);
                                  }
                                  
                                  // TODO: miss right operand.
@@ -172,7 +172,7 @@ IntegerLiteral = [:digit:]+
                                     // Do nothing.
                                  } else {
                                     boolean preSymbolNotExp = !(preSymbol == ExprESymbol.RPAREN
-                                                                || preSymbol == ExprESymbol.INTEGER_LITERL
+                                                                || preSymbol == ExprESymbol.INTEGER_LITERAL
                                                                 || preSymbol == ExprESymbol.IDENTIFIER);
                                     if (preSymbolNotExp) {
                                         addError(ExprError.NoOperandErr,
@@ -192,7 +192,7 @@ IntegerLiteral = [:digit:]+
                                     // Do nothing.
                                  } else {
                                     boolean preSymbolNotExp = !(preSymbol == ExprESymbol.RPAREN
-                                                                || preSymbol == ExprESymbol.INTEGER_LITERL
+                                                                || preSymbol == ExprESymbol.INTEGER_LITERAL
                                                                 || preSymbol == ExprESymbol.IDENTIFIER);
                                     if (preSymbolNotExp) {
                                         addError(ExprError.NoOperandErr,
@@ -211,7 +211,7 @@ IntegerLiteral = [:digit:]+
                                     // Do nothing.
                                  } else {
                                     boolean preSymbolNotExp = !(preSymbol == ExprESymbol.RPAREN
-                                                                || preSymbol == ExprESymbol.INTEGER_LITERL
+                                                                || preSymbol == ExprESymbol.INTEGER_LITERAL
                                                                 || preSymbol == ExprESymbol.IDENTIFIER);
                                     if (preSymbolNotExp) {
                                         addError(ExprError.NoOperandErr,
@@ -231,7 +231,7 @@ IntegerLiteral = [:digit:]+
                                     // Do nothing.
                                  } else {
                                     boolean preSymbolNotExp = !(preSymbol == ExprESymbol.RPAREN
-                                                                || preSymbol == ExprESymbol.INTEGER_LITERL
+                                                                || preSymbol == ExprESymbol.INTEGER_LITERAL
                                                                 || preSymbol == ExprESymbol.IDENTIFIER);
                                     if (preSymbolNotExp) {
                                         addError(ExprError.NoOperandErr,
@@ -251,7 +251,7 @@ IntegerLiteral = [:digit:]+
                                     // Do nothing.
                                  } else {
                                     boolean preSymbolNotExp = !(preSymbol == ExprESymbol.RPAREN
-                                                                || preSymbol == ExprESymbol.INTEGER_LITERL
+                                                                || preSymbol == ExprESymbol.INTEGER_LITERAL
                                                                 || preSymbol == ExprESymbol.IDENTIFIER);
                                     if (preSymbolNotExp) {
                                         addError(ExprError.NoOperandErr,

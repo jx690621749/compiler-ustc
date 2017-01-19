@@ -56,7 +56,7 @@ parser code {:
 	}
 	
 	public static void main(String[] argv)  throws ParserException{
-        String srcFileName = "E:/CompilerProj/student/lab/lab3/test/exp_list.txt";  // source file name
+        String srcFileName = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab3/test/exp_list.txt";  // source file name
         File srcFile = new File(srcFileName);
         
         ExprParser parser = new ExprParser();

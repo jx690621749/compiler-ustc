@@ -11,8 +11,9 @@ import edu.ustc.cs.compile.platform.util.ASTView.core.*;
 import edu.ustc.cs.compile.platform.util.ASTView.plugin.*;
 
 import edu.ustc.cs.compile.lexer.ExpressionLexer;
-//import edu.ustc.cs.compile.parser.expr.ExprParser;
-import edu.ustc.cs.compile.parser.jjexpr.ExprParser;
+import edu.ustc.cs.compile.parser.expr.ExprParser;
+//import edu.ustc.cs.compile.parser.expr.ExprEParser;
+//import edu.ustc.cs.compile.parser.jjexpr.ExprParser;
 
 public class Main {
 	private static boolean viewAST = true;
@@ -57,10 +58,11 @@ public class Main {
 	public static void runPart2() {
 		boolean viewAST = true;
 		
-        String srcFileName = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab3/test/exp_list.txt"; // 你需要将srcFileName置为需要解析的文件
+        String srcFileName = "/Users/wenzhao/workplace/compiler-ustc/CompilerProj/student/lab/lab3/test/exp_list_err.txt"; // 你需要将srcFileName置为需要解析的文件
         File srcFile = new File(srcFileName);
 		ASTNode block;
 		ExprParser parser = new ExprParser();
+		//ExprEParser parser = new ExprEParser();
 		InterRepresent ir = null;
         try {
             ir = parser.doParse(srcFile);
