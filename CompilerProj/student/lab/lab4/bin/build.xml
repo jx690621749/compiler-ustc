@@ -1,7 +1,6 @@
 <project name="lab4" default="build" basedir="..">
     <property name="SRC_DIR" location="src"/>
     <property name="DEST_DIR" location="classes"/>
-    <property name="DEST_DIR" location="classes"/>
     
     <property name="ROOT_DIR" location="../.."/>
     <property name="LIB_DIR" location="${ROOT_DIR}/lib"/>
