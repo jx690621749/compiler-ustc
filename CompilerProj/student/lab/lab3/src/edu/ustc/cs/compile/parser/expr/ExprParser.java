@@ -23,7 +23,7 @@ import edu.ustc.cs.compile.platform.util.ASTView.plugin.*;
 /** CUP v0.11a beta 20060608 generated parser.
   * @version Wed Jan 18 21:19:09 EST 2017
   */
-public class ExprParser extends java_cup.runtime.lr_parser {
+public class ExprParser extends java_cup.runtime.lr_parser implements ParserInterface {
 
   /** Default constructor. */
   public ExprParser() {super();}

@@ -11,9 +11,10 @@ import edu.ustc.cs.compile.platform.util.ASTView.core.*;
 import edu.ustc.cs.compile.platform.util.ASTView.plugin.*;
 
 import edu.ustc.cs.compile.lexer.ExpressionLexer;
-import edu.ustc.cs.compile.parser.expr.ExprParser;
+//import edu.ustc.cs.compile.parser.expr.ExprParser;
 //import edu.ustc.cs.compile.parser.expr.ExprEParser;
-//import edu.ustc.cs.compile.parser.jjexpr.ExprParser;
+import edu.ustc.cs.compile.parser.jjexpr.ExprParser;
+//import edu.ustc.cs.compile.parser.jjexpr.ExprEParser;
 
 public class Main {
 	private static boolean viewAST = true;
