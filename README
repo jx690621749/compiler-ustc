@@ -1,2 +1,38 @@
-course project in the Compiler class in USTC
+This is the course project in the Compiler class in USTC.
+
+
+Language
+The code for this project is in JAVA.
+
+
+The step by step lab contents is in CompilerProj/student/lab
+There are 6 labs:
+lab1: implement a simple interpreter as a ASTVistor for an AST tree of program structure
+lab2: implement lexer (either directly implement or use lexer generator - JFlex)
+lab3: implement parser (either directly implement or use parser generator - CUP or JavaCC. CUP needs to be used together with JFlex, but JavaCUP is standalone)
+lab4: implement checker
+lab5: generate MIPS assembly code from AST intermediate representation
+lab6: generate X86 assembly code from AST intermediate representation
+
+
+The things I learned from this project:
+
+1. compiler front-end development options:
+JFlex + CUP
+JavaCC
+
+I need to read JFlex, CUP and JavaCC manual to get familiar with their syntax file rules and write sample.flex, sample.cup and sample.jj files.
+
+2. the AST intermediate representation and construct Vistor class to traverse the AST tree to do Symble table construction, Semantic checking, interpretation or assembly code generation.
+
+3. The way to construct assembly code from AST tree structures of programs.
+
+4. write ant file to make build and run process easy.
+
+5. write run.sh script file to run a whole project. 
+
+6. a well-formed JAVA project structure
+
+
+The lab instruction manual is written quite well by Yu Zhang and Yiyun Chen. I can read them more times if I need to use compiler knowledge later.
 
